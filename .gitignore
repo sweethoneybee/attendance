@@ -11,3 +11,8 @@ web-build/
 
 # macOS
 .DS_Store
+
+# private settings
+environment.js
+package-lock.json
+test.js
