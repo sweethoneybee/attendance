@@ -1,79 +1,46 @@
+import { FontAwesome } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
+import { AppLoading } from "expo";
+import { Asset } from "expo-asset";
+import * as Font from "expo-font";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
-import * as FileSystem from "expo-file-system";
-import XLSX from "xlsx";
-import getEnvVars from "./environment";
 
-const { getApiUrl } = getEnvVars();
+import Home from "./screen/Home";
 
-const userInput = (setFunc, placeHolder) => {
-  return (
-    <View>
-      <TextInput
-        placeholder={placeHolder}
-        style={{ fontSize: 18, textAlign: "right" }}
-        onSubmitEditing={({ nativeEvent: { text } }) => {
-          if (text) {
-            setFunc(text);
-          }
-        }}
-        autoFocus
-      />
-    </View>
-  );
+const cacheFonrts = (fonts) => {
+  return fonts.map((font) => Font.loadAsync(font));
 };
 
-const getData = async (requestUrl) => {
-  await FileSystem.downloadAsync(
-    encodeURI(requestUrl),
-    FileSystem.documentDirectory + "hiasd"
-  );
-
-  const excel = await FileSystem.readAsStringAsync(
-    FileSystem.documentDirectory + "hiasd"
-  );
-  console.log(excel);
-  const data = XLSX.read(excel, { type: "string" });
-
-  data.SheetNames.forEach((sheetName) => {
-    var rowObj = XLSX.utils.sheet_to_json(data.Sheets[sheetName]);
-    console.log(JSON.stringify(rowObj));
-  });
-};
 export default function App() {
-  // const studentId = "";
-  // const haksuId = "";
-  // const classId = "";
-  const [studentId, setStudentId] = useState();
-  const [haksuId, setHaksuId] = useState();
-  const [classId, setClassId] = useState();
-  const [canRequest, setCanRequest] = useState(false);
+  const [assetIsReady, setAssetIsReady] = useState(false);
 
-  if (
-    studentId !== undefined &&
-    haksuId !== undefined &&
-    classId !== undefined &&
-    canRequest === false
-  ) {
-    console.log("데이터 가져온다!");
+  const [fontsLoaded] = Font.useFonts({
+    Maple_ttf: require("./assets/Maplestory_Light.ttf"),
+    Maple_otf: require("./assets/Maplestory_OTF_Light.otf"),
+  });
 
-    setCanRequest(true);
-    getData(getApiUrl(studentId, haksuId, classId));
+  const _loadAssetsAsync = async () => {
+    const fontAssets = cacheFonrts([FontAwesome.font]);
+
+    await Promise.all([...fontAssets]);
+  };
+
+  if (assetIsReady && fontsLoaded) {
+    return <Home />;
+  } else {
+    return (
+      <AppLoading
+        startAsync={_loadAssetsAsync}
+        onFinish={() => {
+          setAssetIsReady(true);
+        }}
+        onError={(error) => {
+          console.error("Error during loading", error);
+        }}
+      />
+    );
   }
-
-  console.log("studentId: " + studentId);
-  console.log("haksuId: " + haksuId);
-  console.log("classId: " + classId);
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      {userInput(setStudentId, "학번")}
-      {userInput(setHaksuId, "학수번호")}
-      {userInput(setClassId, "수업번호")}
-    </View>
-  );
 }
 
 const styles = StyleSheet.create({
