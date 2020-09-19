@@ -18,7 +18,8 @@ export default ({
   // console.log(coverMessageConfig);
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ height: "90%", backgroundColor: "#FEEE7D" }}>
+      <View style={{ height: "90%", backgroundColor: "black" }}>
+        {/* <View style={{ height: "90%", backgroundColor: "#FEEE7D" }}> */}
         {children}
       </View>
       <View style={{ height: "10%", backgroundColor: "white" }}>{footer}</View>

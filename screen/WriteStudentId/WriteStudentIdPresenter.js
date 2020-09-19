@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
 
-export default () => {
+export default ({ onClick }) => {
+  console.log(onClick);
   return (
     <View>
       <View style={{ height: "100%", backgroundColor: "white" }}>
@@ -20,7 +21,7 @@ export default () => {
               fontSize: 24,
             }}
           >
-            출석확인
+            학번수정
           </Text>
           <Text>하이</Text>
         </ScrollView>

@@ -5,8 +5,9 @@ import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 
-import Home from "./screen/Home";
+import Stack from "./navigation/Stack";
 
 const cacheFonrts = (fonts) => {
   return fonts.map((font) => Font.loadAsync(font));
@@ -27,7 +28,14 @@ export default function App() {
   };
 
   if (assetIsReady && fontsLoaded) {
-    return <Home />;
+    return (
+      <>
+        <NavigationContainer>
+          <Stack />
+        </NavigationContainer>
+        <StatusBar barStyle="light-content" />
+      </>
+    );
   } else {
     return (
       <AppLoading
