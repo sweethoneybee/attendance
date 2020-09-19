@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
-import ClassList from "../screen/ClassList";
+import AttendanceCheck from "../screen/AttendanceCheck";
 import WriteStudentId from "../screen/WriteStudentId";
 import AddClass from "../screen/AddClass";
 import Setting from "../screen/Setting";
@@ -51,7 +51,7 @@ export default ({ navigation, route }) => {
         },
       }}
     >
-      <Tabs.Screen name="출석확인" component={ClassList} />
+      <Tabs.Screen name="출석확인" component={AttendanceCheck} />
       <Tabs.Screen name="학번수정" component={WriteStudentId} />
       <Tabs.Screen name="수업추가" component={AddClass} />
       <Tabs.Screen name="설정" component={Setting} />

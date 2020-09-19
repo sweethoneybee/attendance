@@ -20,7 +20,7 @@ export default () => {
               fontSize: 24,
             }}
           >
-            출석확인
+            출석확인 😱
           </Text>
           <Text>하이</Text>
         </ScrollView>

@@ -15,4 +15,4 @@ web-build/
 # private settings
 environment.js
 package-lock.json
-test.js
+test.json

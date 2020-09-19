@@ -67,6 +67,11 @@ const getData = async (requestUrl) => {
       console.log(lecture);
     });
   });
+  attendanceData.forEach((page) => {
+    page.forEach((lecture) => {
+      console.log(lecture);
+    });
+  });
 };
 export default function App() {
   // const studentId = "";
@@ -86,7 +91,7 @@ export default function App() {
     console.log("데이터 가져온다!");
 
     setCanRequest(true);
-    getData(getApiUrl(studentId, haksuId, classId));
+    getData(getApiUrl(studentId, haksuId + classId));
   }
 
   console.log("studentId: " + studentId);
