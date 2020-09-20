@@ -9,16 +9,16 @@ import AttendanceCheckPresenter from "./AttendanceCheckPresenter";
 const { getApiUrl } = getEnvVars();
 export default () => {
   const [refreshing, setRefreshing] = useState(false);
-  const [attendanceDataOfClasses, setAttendanceDataOfClasses] = useState({
+  const [classes, setClasses] = useState({
     loading: true,
-    attendanceDataOfClasses = []
+    attendanceDataOfClasses: [],
   });
 
   const setRenderingData = async () => {
     let classList, studentId, attendanceDataOfClasses;
     attendanceDataOfClasses = [];
     try {
-      classList = await AsyncStorage.getItem("ClassesId");
+      classList = await AsyncStorage.getItem("ClassList");
       classList = classList !== null ? JSON.parse(classList) : null;
 
       studentId = await AsyncStorage.getItem("StudentId");
@@ -30,24 +30,32 @@ export default () => {
 
     if (classList !== null && studentId !== null) {
       makeAttendanceData(classList, studentId, attendanceDataOfClasses);
-      
-      setAttendanceDataOfClasses({
+      setClasses({
         loading: false,
-        attendanceDataOfClasses
-      })
-    }
-    else{
-      console.log("아무 강의도 등록되지 않았음")
+        attendanceDataOfClasses,
+      });
+    } else {
+      console.log("아무 강의도 등록되지 않았음");
+      setClasses({
+        loading: false,
+        attendanceDataOfClasses,
+      });
     }
   };
 
   useEffect(() => {
     // setRenderingData();
   }, []);
-  return <AttendanceCheckPresenter />;
+  return (
+    <AttendanceCheckPresenter refreshFn={makeAttendanceData} {...classes} />
+  );
 };
 
-const makeAttendanceData = async (classList, studentId, attendanceDataOfClasses) => {
+const makeAttendanceData = async (
+  classList,
+  studentId,
+  attendanceDataOfClasses
+) => {
   classList.forEach(async (className, classId) => {
     await FileSystem.downloadAsync(
       encodeURI(getApiUrl(studentId, classId)),

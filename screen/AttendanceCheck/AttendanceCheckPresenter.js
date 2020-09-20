@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
 
-export default () => {
+export default ({ refreshFn, loading, attendanceDataOfClasses }) => {
   return (
     <View>
       <View style={{ height: "100%", backgroundColor: "white" }}>
