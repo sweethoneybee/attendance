@@ -77,9 +77,9 @@ export default function App() {
   // const studentId = "";
   // const haksuId = "";
   // const classId = "";
-  const [studentId, setStudentId] = useState("2016047883");
-  const [haksuId, setHaksuId] = useState("ITE2037");
-  const [classId, setClassId] = useState("11821");
+  const [studentId, setStudentId] = useState();
+  const [haksuId, setHaksuId] = useState();
+  const [classId, setClassId] = useState();
   const [canRequest, setCanRequest] = useState(false);
 
   if (

@@ -9,17 +9,17 @@ import AttendanceCheckPresenter from "./AttendanceCheckPresenter";
 const { getApiUrl } = getEnvVars();
 export default () => {
   const [refreshing, setRefreshing] = useState(false);
-  const [attendanceInfo, setAttendanceInfo] = useState({
+  const [attendanceDataOfClasses, setAttendanceDataOfClasses] = useState({
     loading: true,
-    renderingInfo = []
+    attendanceDataOfClasses = []
   });
 
-  const getData = async () => {
-    let classes, studentId, renderingInfo;
-    renderingInfo = [];
+  const setRenderingData = async () => {
+    let classList, studentId, attendanceDataOfClasses;
+    attendanceDataOfClasses = [];
     try {
-      classes = await AsyncStorage.getItem("Classes");
-      classes = classes !== null ? JSON.parse(classes) : null;
+      classList = await AsyncStorage.getItem("ClassesId");
+      classList = classList !== null ? JSON.parse(classList) : null;
 
       studentId = await AsyncStorage.getItem("StudentId");
       studentId =
@@ -28,69 +28,60 @@ export default () => {
       console.error("ERR_ATTENDANCE_CHECK_ASYNC_STORAGE_GET_ITEM", err);
     }
 
-    if (classes !== null) {
-      getAttendanceData(classes, studentId, renderingInfo);
+    if (classList !== null && studentId !== null) {
+      makeAttendanceData(classList, studentId, attendanceDataOfClasses);
+      
+      setAttendanceDataOfClasses({
+        loading: false,
+        attendanceDataOfClasses
+      })
     }
-    if (classList !== null) {
-      const { className, absentCount, lectureCount } = classList;
-      absentCount.forEach((absent) => {
-        if (absent === 0) passed.push("😉");
-        else passed.push("😱");
-      });
-
-      setAttendanceInfo({
-        loading: false,
-        renderingInfo
-      });
-    } else {
-      console.log("아무 강의도 없음!");
-      setAttendanceInfo({
-        loading: false,
-      });
+    else{
+      console.log("아무 강의도 등록되지 않았음")
     }
   };
 
   useEffect(() => {
-    // getData();
+    // setRenderingData();
   }, []);
   return <AttendanceCheckPresenter />;
 };
 
-const getAttendanceData = async (classes, studentId, renderingInfo) => {
-  classes.forEach(async (classId, name) => {
+const makeAttendanceData = async (classList, studentId, attendanceDataOfClasses) => {
+  classList.forEach(async (className, classId) => {
     await FileSystem.downloadAsync(
-      encodeURI(getApiUrl(studentId, id)),
-      FileSystem.documentDirectory + "classId"
+      encodeURI(getApiUrl(studentId, classId)),
+      FileSystem.documentDirectory + classId
     );
 
     const xlsFile = await FileSystem.readAsStringAsync(
-      FileSystem.documentDirectory + "classId"
+      FileSystem.documentDirectory + classId
     );
 
     let absentCount = 0;
     const lectures = [];
-    const attendanceData = [];
+    const lectureXls = [];
     const xls = XLSX.read(xlsFile, { type: "string" });
     xls.SheetNames.forEach((sheetName) => {
-      attendanceData.push(XLSX.utils.sheet_to_json(xls.Sheets[sheetName]));
+      lectureXls.push(XLSX.utils.sheet_to_json(xls.Sheets[sheetName]));
     });
 
-    attendanceData.forEach((page) => {
-      page.forEach((lecture) => {
-        let tmpObj = { name: lecture["컨텐츠명"] };
-        if (lecture["온라인출석상태(P/F)"] === "F") {
-          tmpObj.check = false;
+    lectureXls.forEach((xlsPage) => {
+      xlsPage.forEach((oneLectureObj) => {
+        let lecture = { name: oneLectureObj["컨텐츠명"] };
+        if (oneLectureObj["온라인출석상태(P/F)"] === "F") {
+          lecture.check = false;
           absentCount += 1;
         } else {
-          tmpObj.check = true;
+          lecture.check = true;
         }
-        lectures.push(tmpObj);
+        lectures.push(lecture);
       });
     });
 
     let pass = absentCount === 0 ? true : false;
-    renderingInfo.push({
-      className: name,
+    attendanceDataOfClasses.push({
+      className,
       lectures,
       absentCount,
       pass,
