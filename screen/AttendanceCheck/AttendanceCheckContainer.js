@@ -7,55 +7,13 @@ import getEnvVars from "../../environment";
 import AttendanceCheckPresenter from "./AttendanceCheckPresenter";
 
 const { getApiUrl } = getEnvVars();
-export default () => {
-  const [refreshing, setRefreshing] = useState(false);
-  const [classes, setClasses] = useState({
-    loading: true,
-    attendanceDataOfClasses: [],
-  });
-
-  const setRenderingData = async () => {
-    let classList, studentId, attendanceDataOfClasses;
-    attendanceDataOfClasses = [];
-    try {
-      classList = await AsyncStorage.getItem("ClassList");
-      classList = classList !== null ? JSON.parse(classList) : null;
-
-      studentId = await AsyncStorage.getItem("StudentId");
-      studentId =
-        studentId !== null ? JSON.parse(studentId) : "입력된 학번 없음";
-    } catch (err) {
-      console.error("ERR_ATTENDANCE_CHECK_ASYNC_STORAGE_GET_ITEM", err);
-    }
-
-    if (classList !== null && studentId !== null) {
-      makeAttendanceData(classList, studentId, attendanceDataOfClasses);
-      setClasses({
-        loading: false,
-        attendanceDataOfClasses,
-      });
-    } else {
-      console.log("아무 강의도 등록되지 않았음");
-      setClasses({
-        loading: false,
-        attendanceDataOfClasses,
-      });
-    }
-  };
-
-  useEffect(() => {
-    // setRenderingData();
-  }, []);
-  return (
-    <AttendanceCheckPresenter refreshFn={makeAttendanceData} {...classes} />
-  );
-};
 
 const makeAttendanceData = async (
   classList,
   studentId,
   attendanceDataOfClasses
 ) => {
+  console.log("makeAttendanceData함수 호출");
   classList.forEach(async (className, classId) => {
     await FileSystem.downloadAsync(
       encodeURI(getApiUrl(studentId, classId)),
@@ -95,4 +53,48 @@ const makeAttendanceData = async (
       pass,
     });
   });
+};
+
+export default () => {
+  const [refreshing, setRefreshing] = useState(false);
+  const [classes, setClasses] = useState({
+    loading: true,
+    attendanceDataOfClasses: [],
+  });
+
+  const setRenderingData = async () => {
+    let classList, studentId, attendanceDataOfClasses;
+    attendanceDataOfClasses = [];
+    try {
+      classList = await AsyncStorage.getItem("ClassList");
+      classList = classList !== null ? JSON.parse(classList) : null;
+
+      studentId = await AsyncStorage.getItem("StudentId");
+      studentId =
+        studentId !== null ? JSON.parse(studentId) : "입력된 학번 없음";
+    } catch (err) {
+      console.error("ERR_ATTENDANCE_CHECK_ASYNC_STORAGE_GET_ITEM", err);
+    }
+
+    if (classList !== null && studentId !== null) {
+      makeAttendanceData(classList, studentId, attendanceDataOfClasses);
+      setClasses({
+        loading: false,
+        attendanceDataOfClasses,
+      });
+    } else {
+      console.log("아무 강의도 등록되지 않았음");
+      setClasses({
+        loading: false,
+        attendanceDataOfClasses,
+      });
+    }
+  };
+
+  useEffect(() => {
+    setRenderingData();
+  }, []);
+  return (
+    <AttendanceCheckPresenter refreshFn={makeAttendanceData} {...classes} />
+  );
 };
