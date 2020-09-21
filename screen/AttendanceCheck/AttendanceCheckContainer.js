@@ -13,8 +13,10 @@ const makeAttendanceData = async (
   studentId,
   attendanceDataOfClasses
 ) => {
-  console.log("makeAttendanceData함수 호출");
-  classList.forEach(async (className, classId) => {
+  for (let classId in classList) {
+    const className = classList[classId];
+    console.log("수업이름: " + className);
+    console.log("강의 아이디: " + classId);
     await FileSystem.downloadAsync(
       encodeURI(getApiUrl(studentId, classId)),
       FileSystem.documentDirectory + classId
@@ -35,6 +37,7 @@ const makeAttendanceData = async (
     lectureXls.forEach((xlsPage) => {
       xlsPage.forEach((oneLectureObj) => {
         let lecture = { name: oneLectureObj["컨텐츠명"] };
+        console.log("등록한 lecture name: " + lecture.name);
         if (oneLectureObj["온라인출석상태(P/F)"] === "F") {
           lecture.check = false;
           absentCount += 1;
@@ -52,14 +55,14 @@ const makeAttendanceData = async (
       absentCount,
       pass,
     });
-  });
+  }
 };
 
 export default () => {
-  const [refreshing, setRefreshing] = useState(false);
   const [classes, setClasses] = useState({
     loading: true,
     attendanceDataOfClasses: [],
+    studentId: "",
   });
 
   const setRenderingData = async () => {
@@ -77,16 +80,18 @@ export default () => {
     }
 
     if (classList !== null && studentId !== null) {
-      makeAttendanceData(classList, studentId, attendanceDataOfClasses);
+      await makeAttendanceData(classList, studentId, attendanceDataOfClasses);
       setClasses({
         loading: false,
         attendanceDataOfClasses,
+        studentId,
       });
     } else {
       console.log("아무 강의도 등록되지 않았음");
       setClasses({
         loading: false,
         attendanceDataOfClasses,
+        studentId,
       });
     }
   };
@@ -94,7 +99,5 @@ export default () => {
   useEffect(() => {
     setRenderingData();
   }, []);
-  return (
-    <AttendanceCheckPresenter refreshFn={makeAttendanceData} {...classes} />
-  );
+  return <AttendanceCheckPresenter refreshFn={setRenderingData} {...classes} />;
 };

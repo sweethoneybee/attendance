@@ -6,6 +6,7 @@ import * as Font from "expo-font";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import AsyncStorage from "@react-native-community/async-storage";
 
 import Stack from "./navigation/Stack";
 
@@ -23,7 +24,12 @@ export default function App() {
 
   const _loadAssetsAsync = async () => {
     const fontAssets = cacheFonrts([FontAwesome.font]);
-
+    //for Test
+    let classList = {};
+    classList["ITE203711821"] = "객체지향";
+    classList["EDU308010529"] = "학폭이";
+    await AsyncStorage.setItem("StudentId", "2016047883");
+    await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
     await Promise.all([...fontAssets]);
   };
 
