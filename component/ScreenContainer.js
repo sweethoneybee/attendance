@@ -11,7 +11,7 @@ export default ({ title, children }) => (
 const styles = StyleSheet.create({
   mainContainer: { height: "100%", backgroundColor: "white" },
   titleContainer: {
-    fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
+    fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 24,
     textAlign: "center",
     marginTop: "5%",

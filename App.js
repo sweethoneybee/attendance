@@ -20,6 +20,8 @@ export default function App() {
   const [fontsLoaded] = Font.useFonts({
     Maple_ttf: require("./assets/Maplestory_Light.ttf"),
     Maple_otf: require("./assets/Maplestory_OTF_Light.otf"),
+    GodoM_ttf: require("./assets/GodoM.ttf"),
+    GodoM_otf: require("./assets/GodoM.otf"),
   });
 
   const _loadAssetsAsync = async () => {

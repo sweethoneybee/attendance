@@ -2,9 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Input from "../../component/Input";
 import ScreenContainer from "../../component/ScreenContainer";
-
+import AddButton from "../../component/AddButton";
 export default ({
-  onClick,
+  onPress,
   haksuNumber,
   setHaksuNumber,
   classNumber,
@@ -12,28 +12,27 @@ export default ({
   className,
   setClassName,
 }) => (
-  <ScreenContainer title={"수업추가"}>
+  <ScreenContainer title={""}>
     <View style={styles.mainContainer}>
       <Input
-        title={"학수번호(7자. ex) ITE2037"}
+        title={"학수번호"}
         onChangeText={setHaksuNumber}
         value={haksuNumber}
       />
-      <TouchableOpacity style={styles.button}>
-        <Text>하이</Text>
-      </TouchableOpacity>
+      <Input
+        title={"수업번호"}
+        onChangeText={setClassNumber}
+        value={classNumber}
+      />
+      <Input title={"수업이름"} onChangeText={setClassName} value={className} />
+      <AddButton buttonText={"수업추가"} onPress={onPress} />
     </View>
   </ScreenContainer>
 );
 
 const styles = StyleSheet.create({
   mainContainer: {
-    alignItems: "center",
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#3498db",
-    padding: 10,
+    // alignItems: "center",
   },
 });
 
