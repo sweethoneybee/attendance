@@ -28,6 +28,8 @@ export default function App() {
     let classList = {};
     classList["ITE203711821"] = "객체지향";
     classList["EDU308010529"] = "학폭이";
+    // classList["DEE203510528"] = "영어강의";
+    // await AsyncStorage.setItem("StudentId", "2016047756");
     await AsyncStorage.setItem("StudentId", "2016047883");
     await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
     await Promise.all([...fontAssets]);

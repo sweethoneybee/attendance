@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  ActivityIndicator,
-  RefreshControl,
-  Platform,
-} from "react-native";
+import { Text, Platform, StyleSheet } from "react-native";
 import ScrollContainer from "../../component/ScrollContainer";
 import ClassContainer from "../../component/ClassContainer";
 
@@ -23,15 +16,7 @@ export default ({
   return (
     <ScrollContainer refreshFn={refreshFn} loading={loading}>
       <>
-        <Text
-          style={{
-            fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
-            fontSize: 26,
-            textAlign: "center",
-          }}
-        >
-          {studentId}
-        </Text>
+        <Text style={styles.title}>{studentId}</Text>
         {attendanceDataOfClasses.length === 0 ? (
           <Text>텅텅 빔 </Text>
         ) : (
@@ -44,6 +29,13 @@ export default ({
   );
 };
 
+const styles = StyleSheet.create({
+  title: {
+    fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
+    fontSize: 26,
+    textAlign: "center",
+  },
+});
 // return (
 //   <ScrollView
 //     style={{
