@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Text, Platform, StyleSheet } from "react-native";
 import ScrollContainer from "../../component/ScrollContainer";
 import ClassContainer from "../../component/ClassContainer";
+import AddClass from "../../component/AddClass";
 
 export default ({
+  navigation,
+  route,
   refreshFn,
   studentId = "로딩중",
   loading,
@@ -14,8 +17,8 @@ export default ({
   console.log(loading);
 
   return (
-    <ScrollContainer refreshFn={refreshFn} loading={loading}>
-      <>
+    <>
+      <ScrollContainer refreshFn={refreshFn} loading={loading}>
         <Text style={styles.title}>{studentId}</Text>
         {attendanceDataOfClasses.length === 0 ? (
           <Text>텅텅 빔 </Text>
@@ -24,8 +27,15 @@ export default ({
             <ClassContainer key={classData.className} {...classData} />
           ))
         )}
-      </>
-    </ScrollContainer>
+      </ScrollContainer>
+      <AddClass
+        buttonText={"+"}
+        onPress={() => {
+          console.log("야호");
+          navigation.navigate("AddClass");
+        }}
+      />
+    </>
   );
 };
 

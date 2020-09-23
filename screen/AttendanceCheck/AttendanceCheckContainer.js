@@ -58,7 +58,7 @@ const makeAttendanceData = async (
   }
 };
 
-export default () => {
+export default ({ navigation, route }) => {
   const [classes, setClasses] = useState({
     loading: true,
     attendanceDataOfClasses: [],
@@ -99,5 +99,12 @@ export default () => {
   useEffect(() => {
     setRenderingData();
   }, []);
-  return <AttendanceCheckPresenter refreshFn={setRenderingData} {...classes} />;
+  return (
+    <AttendanceCheckPresenter
+      navigation={navigation}
+      route={route}
+      refreshFn={setRenderingData}
+      {...classes}
+    />
+  );
 };

@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import Attendance from "../screen/Attendance";
+import AddClass from "../screen/AddClass";
 import Tabs from "../navigation/Tabs";
 const Stack = createStackNavigator();
 
@@ -22,7 +23,16 @@ export default () => {
   return (
     <Stack.Navigator screenOptions={headerOptions}>
       <Stack.Screen name="Tabs" component={Tabs} />
-      <Stack.Screen name="Attendacne" component={Attendance} />
+      <Stack.Screen
+        name="Attendacne"
+        component={Attendance}
+        options={{ title: "", headerBackTitleVisible: false }}
+      />
+      <Stack.Screen
+        name="AddClass"
+        component={AddClass}
+        options={{ title: "", headerBackTitleVisible: false }}
+      />
     </Stack.Navigator>
   );
 };
