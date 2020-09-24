@@ -53,7 +53,7 @@ export default ({ navigation, route }) => {
     >
       <Tabs.Screen name="출석확인" component={AttendanceCheck} />
       <Tabs.Screen name="학번수정" component={WriteStudentId} />
-      <Tabs.Screen name="수업추가" component={AddClass} />
+      {/* <Tabs.Screen name="수업추가" component={AddClass} /> */}
       <Tabs.Screen name="설정" component={Setting} />
     </Tabs.Navigator>
   );

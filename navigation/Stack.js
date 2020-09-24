@@ -32,6 +32,7 @@ export default () => {
         name="AddClass"
         component={AddClass}
         options={{ title: "", headerBackTitleVisible: false }}
+        // initialParams={{hi:"2"}}
       />
     </Stack.Navigator>
   );
