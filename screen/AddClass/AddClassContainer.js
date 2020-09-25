@@ -20,10 +20,11 @@ export default ({ navigation, route }) => {
     classList[classId] = className;
     await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
   };
-  console.log("이름: " + route.name);
 
   return (
     <AddClassPresenter
+      navigation={navigation}
+      route={route}
       onPress={onPress}
       haksuNumber={haksuNumber}
       setHaksuNumber={setHaksuNumber}

@@ -24,15 +24,27 @@ export default () => {
     <Stack.Navigator screenOptions={headerOptions}>
       <Stack.Screen name="Tabs" component={Tabs} />
       <Stack.Screen
-        name="Attendacne"
+        name="Attendance"
         component={Attendance}
         options={{ title: "", headerBackTitleVisible: false }}
       />
       <Stack.Screen
-        name="AddClass"
+        name="AddClass_1"
         component={AddClass}
         options={{ title: "", headerBackTitleVisible: false }}
-        // initialParams={{hi:"2"}}
+        initialParams={{ next: "2" }}
+      />
+      <Stack.Screen
+        name="AddClass_2"
+        component={AddClass}
+        options={{ title: "", headerBackTitleVisible: false }}
+        initialParams={{ next: "3" }}
+      />
+      <Stack.Screen
+        name="AddClass_3"
+        component={AddClass}
+        options={{ title: "", headerBackTitleVisible: false }}
+        initialParams={{ next: "4" }}
       />
     </Stack.Navigator>
   );

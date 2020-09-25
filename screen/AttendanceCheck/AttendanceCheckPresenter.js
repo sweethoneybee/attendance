@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, Platform, StyleSheet } from "react-native";
 import ScrollContainer from "../../component/ScrollContainer";
 import ClassContainer from "../../component/ClassContainer";
-import AddClass from "../../component/AddClass";
+import AddClassButton from "../../component/AddClassButton";
 
 export default ({
   navigation,
@@ -28,11 +28,11 @@ export default ({
           ))
         )}
       </ScrollContainer>
-      <AddClass
+      <AddClassButton
         buttonText={"+"}
         onPress={() => {
           console.log("야호");
-          navigation.navigate("AddClass");
+          navigation.navigate("AddClass_1");
         }}
       />
     </>
