@@ -9,45 +9,34 @@ export default ({
   navigation,
   route,
   onPress,
-  haksuNumber,
-  setHaksuNumber,
-  classNumber,
-  setClassNumber,
-  className,
-  setClassName,
+  titles,
+  stateValue,
+  setFunc,
 }) => {
   return (
-    <>
-      <ScreenContainer title={""}>
-        <View style={styles.mainContainer}>
-          <Input
-            title={"학수번호"}
-            onChangeText={setHaksuNumber}
-            value={haksuNumber}
-          />
-          <Input
-            title={"수업번호"}
-            onChangeText={setClassNumber}
-            value={classNumber}
-          />
-          <Input
-            title={"수업이름"}
-            onChangeText={setClassName}
-            value={className}
-          />
-          <AddButton buttonText={"수업추가"} onPress={onPress} />
-        </View>
-      </ScreenContainer>
-      <AddClassButton
-        buttonText={"+"}
-        onPress={() => {
-          navigation.navigate(
-            route.params.next === "4" ? "Tabs" : "AddClass_" + route.params.next
-          );
-          // navigation.navigate("Attendance");
-        }}
-      />
-    </>
+    <ScreenContainer title={"이얏호우"}>
+      <View style={styles.mainContainer}>
+        <Input
+          title={titles[route.params.page]}
+          onChangeText={setFunc[route.params.page]}
+          value={stateValue[route.params.page]}
+        />
+        <AddButton
+          buttonText={route.params.page === "2" ? "수업 추가" : "다음"}
+          onPress={
+            route.params.page === "2"
+              ? onPress
+              : () => {
+                  navigation.navigate(
+                    route.params.page === "2"
+                      ? "Tabs"
+                      : "AddClass_" + (Number(route.params.page) + 1)
+                  );
+                }
+          }
+        />
+      </View>
+    </ScreenContainer>
   );
 };
 

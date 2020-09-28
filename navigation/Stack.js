@@ -29,22 +29,22 @@ export default () => {
         options={{ title: "", headerBackTitleVisible: false }}
       />
       <Stack.Screen
+        name="AddClass_0"
+        component={AddClass}
+        options={{ title: "", headerBackTitleVisible: false }}
+        initialParams={{ page: "0" }}
+      />
+      <Stack.Screen
         name="AddClass_1"
         component={AddClass}
         options={{ title: "", headerBackTitleVisible: false }}
-        initialParams={{ next: "2" }}
+        initialParams={{ page: "1" }}
       />
       <Stack.Screen
         name="AddClass_2"
         component={AddClass}
         options={{ title: "", headerBackTitleVisible: false }}
-        initialParams={{ next: "3" }}
-      />
-      <Stack.Screen
-        name="AddClass_3"
-        component={AddClass}
-        options={{ title: "", headerBackTitleVisible: false }}
-        initialParams={{ next: "4" }}
+        initialParams={{ page: "2" }}
       />
     </Stack.Navigator>
   );

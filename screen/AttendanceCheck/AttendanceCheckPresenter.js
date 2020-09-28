@@ -31,8 +31,7 @@ export default ({
       <AddClassButton
         buttonText={"+"}
         onPress={() => {
-          console.log("야호");
-          navigation.navigate("AddClass_1");
+          navigation.navigate("AddClass_0");
         }}
       />
     </>

@@ -4,8 +4,8 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 export default ({ navigation, route }) => {
   const [haksuNumber, setHaksuNumber] = useState("ex) ITE2037");
-  const [classNumber, setClassNumber] = useState("ex) 15523");
-  const [className, setClassName] = useState("ex) 컴구");
+  const [classNumber, setClassNumber] = useState("ex) 11821");
+  const [className, setClassName] = useState("ex) 객체지향");
   const makeClassDto = () => {
     return {
       classId: haksuNumber + classNumber,
@@ -20,18 +20,21 @@ export default ({ navigation, route }) => {
     classList[classId] = className;
     await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
   };
+  console.log("학수번호: " + haksuNumber);
+  console.log("수업번호: " + classNumber);
+  console.log("수업이름: " + className);
 
+  const titles = ["학수번호", "수업번호", "수업이름"];
+  const stateValue = [haksuNumber, classNumber, className];
+  const setFunc = [setHaksuNumber, setClassNumber, setClassName];
   return (
     <AddClassPresenter
       navigation={navigation}
       route={route}
       onPress={onPress}
-      haksuNumber={haksuNumber}
-      setHaksuNumber={setHaksuNumber}
-      classNumber={classNumber}
-      setClassNumber={setClassNumber}
-      className={className}
-      setClassName={setClassName}
+      titles={titles}
+      stateValue={stateValue}
+      setFunc={setFunc}
     />
   );
 };
