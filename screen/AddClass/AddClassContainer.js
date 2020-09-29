@@ -23,7 +23,7 @@ export default ({ navigation, route }) => {
   console.log("학수번호: " + haksuNumber);
   console.log("수업번호: " + classNumber);
   console.log("수업이름: " + className);
-
+  console.log("파람스: " + JSON.stringify(route.params));
   const titles = ["학수번호", "수업번호", "수업이름"];
   const stateValue = [haksuNumber, classNumber, className];
   const setFunc = [setHaksuNumber, setClassNumber, setClassName];
@@ -31,10 +31,21 @@ export default ({ navigation, route }) => {
     <AddClassPresenter
       navigation={navigation}
       route={route}
-      onPress={onPress}
-      titles={titles}
-      stateValue={stateValue}
-      setFunc={setFunc}
+      onPress={
+        route.params.page === "2"
+          ? onPress
+          : () => {
+              navigation.navigate(
+                route.params.page === "2"
+                  ? "Tabs"
+                  : "AddClass_" + (Number(route.params.page) + 1)
+              );
+            }
+      }
+      title={titles[route.params.page]}
+      onChangeText={setFunc[route.params.page]}
+      value={stateValue[route.params.page]}
+      buttonText={route.params.page === "2" ? "수업 추가" : "다음"}
     />
   );
 };
