@@ -6,6 +6,14 @@ export default ({ navigation, route }) => {
   const [haksuNumber, setHaksuNumber] = useState("ex) ITE2037");
   const [classNumber, setClassNumber] = useState("ex) 11821");
   const [className, setClassName] = useState("ex) 객체지향");
+  const [isAdd, setIsAdd] = useState(false);
+
+  useEffect(() => {
+    isAdd = false;
+    return () => {
+      // refresh
+    };
+  }, [isAdd]);
   const makeClassDto = () => {
     return {
       classId: haksuNumber + classNumber,
@@ -23,7 +31,7 @@ export default ({ navigation, route }) => {
   console.log("학수번호: " + haksuNumber);
   console.log("수업번호: " + classNumber);
   console.log("수업이름: " + className);
-  console.log("파람스: " + JSON.stringify(route.params));
+
   const titles = ["학수번호", "수업번호", "수업이름"];
   const stateValue = [haksuNumber, classNumber, className];
   const setFunc = [setHaksuNumber, setClassNumber, setClassName];
@@ -31,21 +39,11 @@ export default ({ navigation, route }) => {
     <AddClassPresenter
       navigation={navigation}
       route={route}
-      onPress={
-        route.params.page === "2"
-          ? onPress
-          : () => {
-              navigation.navigate(
-                route.params.page === "2"
-                  ? "Tabs"
-                  : "AddClass_" + (Number(route.params.page) + 1)
-              );
-            }
-      }
-      title={titles[route.params.page]}
-      onChangeText={setFunc[route.params.page]}
-      value={stateValue[route.params.page]}
-      buttonText={route.params.page === "2" ? "수업 추가" : "다음"}
+      onPress={onPress}
+      titles={titles}
+      onChangeText={setFunc}
+      value={stateValue}
+      buttonText={"수업추가"}
     />
   );
 };

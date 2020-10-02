@@ -32,19 +32,6 @@ export default () => {
         name="AddClass_0"
         component={AddClass}
         options={{ title: "", headerBackTitleVisible: false }}
-        initialParams={{ page: "0" }}
-      />
-      <Stack.Screen
-        name="AddClass_1"
-        component={AddClass}
-        options={{ title: "", headerBackTitleVisible: false }}
-        initialParams={{ page: "1" }}
-      />
-      <Stack.Screen
-        name="AddClass_2"
-        component={AddClass}
-        options={{ title: "", headerBackTitleVisible: false }}
-        initialParams={{ page: "2" }}
       />
     </Stack.Navigator>
   );
