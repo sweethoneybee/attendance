@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Input from "../../component/Input";
 import ScreenContainer from "../../component/ScreenContainer";
-import AddButton from "../../component/AddButton";
+import BasicButton from "../../component/BasicButton";
 
 export default ({ onPress, titles, onChangeText, value, buttonText }) => {
   return (
@@ -23,7 +23,7 @@ export default ({ onPress, titles, onChangeText, value, buttonText }) => {
           onChangeText={onChangeText[2]}
           value={value[2]}
         />
-        <AddButton buttonText={buttonText} onPress={onPress} />
+        <BasicButton buttonText={buttonText} onPress={onPress} />
       </View>
     </ScreenContainer>
   );
