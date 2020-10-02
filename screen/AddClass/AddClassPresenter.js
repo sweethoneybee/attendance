@@ -1,9 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Input from "../../component/Input";
 import ScreenContainer from "../../component/ScreenContainer";
 import AddButton from "../../component/AddButton";
-import AddClassButton from "../../component/AddClassButton";
 
 export default ({ onPress, titles, onChangeText, value, buttonText }) => {
   return (

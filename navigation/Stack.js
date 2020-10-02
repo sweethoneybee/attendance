@@ -29,7 +29,7 @@ export default () => {
         options={{ title: "", headerBackTitleVisible: false }}
       />
       <Stack.Screen
-        name="AddClass_0"
+        name="AddClass"
         component={AddClass}
         options={{ title: "", headerBackTitleVisible: false }}
       />

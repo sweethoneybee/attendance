@@ -12,16 +12,14 @@ export default ({
   loading,
   attendanceDataOfClasses,
 }) => {
-  console.log("Presenter 시작");
-  console.log(JSON.stringify(refreshFn));
-  console.log(loading);
+  console.log("AttendanceCheck Presenter 시작");
 
   return (
     <>
       <ScrollContainer refreshFn={refreshFn} loading={loading}>
         <Text style={styles.title}>{studentId}</Text>
         {attendanceDataOfClasses.length === 0 ? (
-          <Text>텅텅 빔 </Text>
+          <Text>아직 수업이 등록되지 않았습니다 </Text>
         ) : (
           attendanceDataOfClasses.map((classData) => (
             <ClassContainer key={classData.className} {...classData} />
@@ -31,7 +29,7 @@ export default ({
       <AddClassButton
         buttonText={"+"}
         onPress={() => {
-          navigation.navigate("AddClass_0");
+          navigation.navigate("AddClass", { refreshFn });
         }}
       />
     </>
@@ -45,24 +43,3 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
-// return (
-//   <ScrollView
-//     style={{
-//       // marginTop: 0,
-//       marginBottom: 40,
-//     }}
-//     contentContainerStyle={{ padding: 10 }}
-//     showsVerticalScrollIndicator={true}
-//   >
-//     <Text
-//       style={{
-//         textAlign: "center",
-//         fontFamily: "Maple_ttf",
-//         fontSize: 24,
-//       }}
-//     >
-//       출석확인 😱
-//     </Text>
-//     <Text>하이</Text>
-//   </ScrollView>
-// );

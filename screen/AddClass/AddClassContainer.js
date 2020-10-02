@@ -6,14 +6,7 @@ export default ({ navigation, route }) => {
   const [haksuNumber, setHaksuNumber] = useState("ex) ITE2037");
   const [classNumber, setClassNumber] = useState("ex) 11821");
   const [className, setClassName] = useState("ex) 객체지향");
-  const [isAdd, setIsAdd] = useState(false);
 
-  useEffect(() => {
-    isAdd = false;
-    return () => {
-      // refresh
-    };
-  }, [isAdd]);
   const makeClassDto = () => {
     return {
       classId: haksuNumber + classNumber,
@@ -21,12 +14,15 @@ export default ({ navigation, route }) => {
     };
   };
   const onPress = async () => {
+    // 값이 잘 들어왔는지 검사하는 로직이 필요함
     let { classId, className } = makeClassDto();
     console.log("classId: " + classId + ", className: " + className);
     let classList = await AsyncStorage.getItem("ClassList");
     classList = classList !== null ? JSON.parse(classList) : {};
     classList[classId] = className;
     await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
+    route.params.refreshFn();
+    navigation.navigate("Tabs");
   };
   console.log("학수번호: " + haksuNumber);
   console.log("수업번호: " + classNumber);
