@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Input from "../../component/Input";
 import ScreenContainer from "../../component/ScreenContainer";
 import BasicButton from "../../component/BasicButton";
@@ -23,7 +23,9 @@ export default ({ onPress, titles, onChangeText, value, buttonText }) => {
           onChangeText={onChangeText[2]}
           value={value[2]}
         />
-        <BasicButton buttonText={buttonText} onPress={onPress} />
+        <BasicButton onPress={onPress}>
+          <Text>{buttonText}</Text>
+        </BasicButton>
       </View>
     </ScreenContainer>
   );

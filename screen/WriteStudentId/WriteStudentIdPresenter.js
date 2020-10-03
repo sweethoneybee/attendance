@@ -3,17 +3,14 @@ import { View, Text, ScrollView, StyleSheet } from "react-native";
 import Input from "../../component/Input";
 import BasicButton from "../../component/BasicButton";
 
-export default ({ onChangeText, value }) => {
+export default ({ onChangeText, value, onPress }) => {
   return (
     <View>
-      <Text style={styles.title}></Text>
+      <Text style={styles.title}>타이틀</Text>
       <Input title={"학번입력"} onChangeText={onChangeText} value={value} />
-      <BasicButton
-        buttonText={"학번수정하기"}
-        onPress={() => {
-          console.log("학번수정버튼눌림!");
-        }}
-      />
+      <BasicButton onPress={onPress}>
+        <Text>{"학번수정하기"}</Text>
+      </BasicButton>
     </View>
   );
 };
