@@ -7,7 +7,15 @@ export default ({ onChangeText, value, onPress }) => {
   return (
     <View>
       <Text style={styles.title}>타이틀</Text>
-      <Input title={"학번입력"} onChangeText={onChangeText} value={value} />
+      <Input
+        title={"학번입력"}
+        onChangeText={onChangeText}
+        value={value}
+        /*
+         **  regex
+         **  \d{10}
+         */
+      />
       <BasicButton onPress={onPress}>
         <Text>{"학번수정하기"}</Text>
       </BasicButton>

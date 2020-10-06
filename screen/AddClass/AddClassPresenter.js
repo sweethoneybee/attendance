@@ -12,16 +12,27 @@ export default ({ onPress, titles, onChangeText, value, buttonText }) => {
           title={titles[0]}
           onChangeText={onChangeText[0]}
           value={value[0]}
+          maxLength={7}
+          /*
+           **  regex
+           **  [A-Z]{3}\d{4}
+           */
         />
         <Input
           title={titles[1]}
           onChangeText={onChangeText[1]}
           value={value[1]}
+          maxLength={5}
+          /*
+           **  regex
+           **  \d{5}
+           */
         />
         <Input
           title={titles[2]}
           onChangeText={onChangeText[2]}
           value={value[2]}
+          maxLength={20}
         />
         <BasicButton onPress={onPress}>
           <Text>{buttonText}</Text>

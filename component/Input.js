@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
-export default ({ title, onChangeText, value }) => (
+export default ({ title, onChangeText, value, maxLength }) => (
   <View style={styles.mainContainer}>
     <Text style={styles.inputTitle}>{title}</Text>
     <TextInput
@@ -12,7 +12,7 @@ export default ({ title, onChangeText, value }) => (
       }}
       placeholder={value}
       autoCorrect={false}
-      maxLength={12}
+      maxLength={maxLength !== undefined ? maxLength : 12}
       autoCapitalize={"characters"}
     />
   </View>
