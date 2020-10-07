@@ -1,38 +1,58 @@
 import React from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet, TextInput } from "react-native";
 import Input from "../../component/Input";
 import BasicButton from "../../component/BasicButton";
 
 export default ({ onChangeText, value, onPress }) => {
   return (
-    <View style={{ height: "100%", width: "100%" }}>
-      <View style={{ height: "20%" }} />
-      <Input
-        title={"학번입력"}
-        onChangeText={onChangeText}
-        value={value}
+    <View style={styles.main}>
+      <View style={{ height: "25%" }} />
+      <Text style={styles.title}>학번</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={(text) => {
+          onChangeText(text);
+          console.log(text);
+        }}
+        placeholder={value}
+        autoCorrect={false}
         maxLength={10}
-        /*
-         **  regex
-         **  \d{10}
-         */
       />
       <BasicButton buttonStyle={styles.button} onPress={onPress}>
-        <Text>{"학번수정하기"}</Text>
+        <Text>{"완료"}</Text>
       </BasicButton>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  // title: {
-  //   textAlign: "center",
-  //   fontFamily: "Maple_ttf",
-  //   fontSize: 24,
-  // },
+  main: {
+    height: "100%",
+    width: "100%",
+  },
+  title: {
+    fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
+    fontSize: 38,
+    marginLeft: "5%",
+  },
   button: {
     alignItems: "center",
     backgroundColor: "#3498db",
-    padding: 10,
+    borderRadius: 10,
+    width: "25%",
+    height: "5%",
+    paddingTop: "2%",
+    marginLeft: "37%",
+    marginTop: "2%",
+  },
+  input: {
+    borderColor: "black",
+    borderBottomWidth: 0.7,
+    width: "80%",
+    height: 40,
+    marginTop: "5%",
+    marginBottom: "2%",
+    marginLeft: "5%",
+    fontSize: 30,
   },
 });

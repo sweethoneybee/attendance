@@ -1,11 +1,17 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
-export default ({ title, onChangeText, value, maxLength = 20 }) => (
+export default ({
+  title,
+  onChangeText,
+  value,
+  maxLength = 20,
+  inputStyle = styles.input,
+}) => (
   <View style={styles.mainContainer}>
     <Text style={styles.inputTitle}>{title}</Text>
     <TextInput
-      style={styles.input}
+      style={inputStyle}
       onChangeText={(text) => {
         onChangeText(text);
         console.log(text);
@@ -20,7 +26,8 @@ export default ({ title, onChangeText, value, maxLength = 20 }) => (
 
 const styles = StyleSheet.create({
   mainContainer: {
-    marginBottom: "5%",
+    // width: "100%",
+    // height: "100%",
   },
   inputTitle: {
     fontSize: 24,
