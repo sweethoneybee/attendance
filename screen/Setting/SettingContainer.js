@@ -7,5 +7,5 @@ export default ({ navigation, route }) => {
     console.log("수업목록 버튼 클릭");
   };
 
-  return <SettingPresenter onClick={onClick} />;
+  return <SettingPresenter navigation={navigation} onClick={onClick} />;
 };

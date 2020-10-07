@@ -21,6 +21,9 @@ export default ({ navigation, route }) => {
     classList = classList !== null ? JSON.parse(classList) : {};
     classList[classId] = className;
     await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
+    setHaksuNumber("ex) ITE2037");
+    setClassNumber("ex) 11821");
+    setClassName("ex) 객체지향");
     route.params.refreshFn();
     navigation.navigate("Tabs");
   };

@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollView, Text, StyleSheet } from "react-native";
 import BasicButton from "../../component/BasicButton";
 
-export default ({ onClick }) => {
+export default ({ navigation, onClick }) => {
   return (
     <ScrollView style={{ width: "100%", height: "100%" }}>
       <Text style={styles.buttonTitle}>수정</Text>
@@ -17,7 +17,7 @@ export default ({ onClick }) => {
       <BasicButton
         buttonStyle={styles.button}
         onPress={() => {
-          console.log("임시 온프레스");
+          navigation.navigate("WriteStudentId");
         }}
       >
         <Text style={styles.buttonText}>{"나의 학번"}</Text>
@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
   main: { width: "100%", height: "100%" },
   button: {
     backgroundColor: "white",
-    height: "15%",
+    // height: "15%",
+    height: 40,
     marginTop: "0.4%",
     paddingLeft: "5%",
   },

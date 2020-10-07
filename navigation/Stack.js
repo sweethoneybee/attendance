@@ -2,6 +2,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import Attendance from "../screen/Attendance";
 import AddClass from "../screen/AddClass";
+import WriteStudentId from "../screen/WriteStudentId";
 import Tabs from "../navigation/Tabs";
 const Stack = createStackNavigator();
 
@@ -31,6 +32,11 @@ export default () => {
       <Stack.Screen
         name="AddClass"
         component={AddClass}
+        options={{ title: "", headerBackTitleVisible: false }}
+      />
+      <Stack.Screen
+        name="WriteStudentId"
+        component={WriteStudentId}
         options={{ title: "", headerBackTitleVisible: false }}
       />
     </Stack.Navigator>
