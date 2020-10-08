@@ -9,16 +9,21 @@ export default ({
   denyOnPress = () => console.log("취소 눌림"),
 }) => {
   console.log("알람버튼");
-  Alert.alert(title, message, [
-    // { text: "버튼텍스트", onPress: () => console.log("버튼 눌림") },
-    {
-      text: confirmMessage,
-      onPress: confirmOnPress,
-    },
-    {
-      text: denyMessage,
-      onPress: denyOnPress,
-      style: "destructive",
-    },
-  ]);
+  Alert.alert(
+    title,
+    message,
+    [
+      // { text: "버튼텍스트", onPress: () => console.log("버튼 눌림") },
+      {
+        text: confirmMessage,
+        onPress: confirmOnPress,
+      },
+      {
+        text: denyMessage,
+        onPress: denyOnPress,
+        style: "destructive",
+      },
+    ],
+    { cancelable: false }
+  );
 };
