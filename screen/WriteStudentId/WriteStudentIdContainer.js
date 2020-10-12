@@ -20,23 +20,26 @@ const createOneButtonAlert = () => {
 
 export default ({ navigation, route }) => {
   const [studentId, setStudentId] = useState("학번 10글자");
+
+  const confirmOnPress = () => {
+    // await AsyncStorage.setItem("StudentId", studentId);
+    console.log("학번수정완료");
+    setStudentId("학번 10글자");
+    navigation.navigate("Tabs")
+  }
+  const denyOnPress = () => {
+    // do nothing
+  }
   const onPress = async () => {
     console.log("학번수정하기 버튼 눌림");
-    // await AsyncStorage.setItem("StudentId", studentId);
-    setStudentId("학번 10글자");
-
-    // 학번 수정 완료 팝업 메시지 띄우기
-    // CreateTwoButtonAlert({
-    //   title: "타이뜰",
-    //   message: "메세지/",
-    //   confirmMessage: "확인",
-    //   confirmOnPress: () => console.log("확ㅇ;ㅣㄴ"),
-    //   denyMessage: "거절",
-    //   denyOnPress: () => console.log("거절"),
-    // });
-    CreateTwoButtonAlert({});
-    console.log("학번수정완료");
-    navigation.navigate("Tabs");
+    CreateTwoButtonAlert({
+        title: studentId, 
+        message: "위의 학번으로 수정하시겠습니까?\n(수정 시 수업목록이 초기화됩니다)",
+        confirmMessage: "좋아요", 
+        denyMessage: "싫어요",
+        confirmOnPress,
+        denyOnPress
+      });
   };
   return (
     <WriteStudentIdPresenter

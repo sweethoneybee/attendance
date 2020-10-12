@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
-import Input from "../../component/Input";
 import BasicButton from "../../component/BasicButton";
 
 export default ({ onChangeText, value, onPress }) => {
