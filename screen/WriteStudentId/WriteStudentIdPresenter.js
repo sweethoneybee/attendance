@@ -18,7 +18,7 @@ export default ({ onChangeText, value, onPress }) => {
         maxLength={10}
       />
       <BasicButton buttonStyle={styles.button} onPress={onPress}>
-        <Text>{"완료"}</Text>
+        <Text style={styles.buttonText}>{"수정하기"}</Text>
       </BasicButton>
     </View>
   );
@@ -43,6 +43,10 @@ const styles = StyleSheet.create({
     paddingTop: "2%",
     marginLeft: "37%",
     marginTop: "2%",
+  },
+  buttonText: {
+    fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
+    fontSize: 14
   },
   input: {
     borderColor: "black",

@@ -19,18 +19,18 @@ const createOneButtonAlert = () => {
 };
 
 export default ({ navigation, route }) => {
-  const [studentId, setStudentId] = useState("학번 10글자");
+  const [studentId, setStudentId] = useState("10글자");
 
-  const confirmOnPress = () => {
+  const confirmOnPress = async () => {
     // await AsyncStorage.setItem("StudentId", studentId);
-    console.log("학번수정완료");
-    setStudentId("학번 10글자");
+    // await AsyncStorage.setItem("ClassList", JSON.stringify({}));
+    setStudentId("10글자");
     navigation.navigate("Tabs")
   }
   const denyOnPress = () => {
     // do nothing
   }
-  const onPress = async () => {
+  const onPress = () => {
     console.log("학번수정하기 버튼 눌림");
     CreateTwoButtonAlert({
         title: studentId, 
