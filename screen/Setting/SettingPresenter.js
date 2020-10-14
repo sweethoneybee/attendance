@@ -7,7 +7,7 @@ export default ({ navigation, onClick }) => {
     <ScrollView style={{ width: "100%", height: "100%" }}>
       <Text style={styles.buttonTitle}>수정</Text>
       <BasicButton
-        buttonStyle={styles.button}
+        style={styles.button}
         onPress={() => {
           console.log("임시 온프레스");
         }}
@@ -15,7 +15,7 @@ export default ({ navigation, onClick }) => {
         <Text style={styles.buttonText}>{"현재 학기"}</Text>
       </BasicButton>
       <BasicButton
-        buttonStyle={styles.button}
+        style={styles.button}
         onPress={() => {
           navigation.navigate("WriteStudentId");
         }}
@@ -24,7 +24,7 @@ export default ({ navigation, onClick }) => {
       </BasicButton>
       <Text style={styles.buttonTitle}>개발자</Text>
       <BasicButton
-        buttonStyle={styles.button}
+        style={styles.button}
         onPress={() => {
           console.log("임시 온프레스");
         }}
@@ -32,7 +32,7 @@ export default ({ navigation, onClick }) => {
         <Text style={styles.buttonText}>{"깃헙"}</Text>
       </BasicButton>
       <BasicButton
-        buttonStyle={styles.button}
+        style={styles.button}
         onPress={() => {
           console.log("임시 온프레스");
         }}
@@ -41,7 +41,7 @@ export default ({ navigation, onClick }) => {
       </BasicButton>
       <Text style={styles.buttonTitle}>나가기</Text>
       <BasicButton
-        buttonStyle={styles.button}
+        style={styles.button}
         onPress={() => {
           console.log("임시 온프레스");
         }}
@@ -55,9 +55,10 @@ export default ({ navigation, onClick }) => {
 const styles = StyleSheet.create({
   main: { width: "100%", height: "100%" },
   button: {
+    alignItems: "flex-start",
+    padding:0,
     backgroundColor: "white",
-    // height: "15%",
-    height: 40,
+    height: "15%",
     marginTop: "0.4%",
     paddingLeft: "5%",
   },

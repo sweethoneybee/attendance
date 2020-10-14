@@ -17,7 +17,7 @@ export default ({ onChangeText, value, onPress }) => {
         autoCorrect={false}
         maxLength={10}
       />
-      <BasicButton buttonStyle={styles.button} onPress={onPress}>
+      <BasicButton style={styles.button} onPress={onPress}>
         <Text style={styles.buttonText}>{"수정하기"}</Text>
       </BasicButton>
     </View>
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     paddingTop: "2%",
     marginLeft: "37%",
     marginTop: "2%",
+    padding: 0
   },
   buttonText: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Input from "../../component/Input";
+import Input from "../../component/AddClassInput";
 import ScreenContainer from "../../component/ScreenContainer";
 import BasicButton from "../../component/BasicButton";
 
@@ -13,7 +13,7 @@ export default ({ onPress, titles, onChangeText, value, buttonText }) => {
           onChangeText={onChangeText[0]}
           value={value[0]}
           maxLength={7}
-          feedBack={"\"대문자알파벳 3자 + 숫자 4자\"으로 적어주세요"}
+          feedBack={"\"대문자알파벳 3자 + 숫자 4자\"로 적어주세요"}
           isValidText={
             (text) => (text.match(/[A-Z]{3}\d{4}/) !== null ? true : false)
           }
@@ -44,8 +44,8 @@ export default ({ onPress, titles, onChangeText, value, buttonText }) => {
             (text) => (text !== value[2] && text !== "" ? true : false)
           }
         />
-        <BasicButton onPress={onPress}>
-          <Text>{buttonText}</Text>
+        <BasicButton onPress={onPress} style={styles.button}>
+          <Text style={styles.buttonText}>{buttonText}</Text>
         </BasicButton>
       </View>
     </ScreenContainer>
@@ -56,4 +56,13 @@ const styles = StyleSheet.create({
   mainContainer: {
     // alignItems: "center",
   },
+  button: {
+    marginLeft: "30%",
+    padding: 10,
+    width: "40%",
+    borderRadius: 10
+  },
+  buttonText: {
+    fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
+  }
 });
