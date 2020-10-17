@@ -27,17 +27,18 @@ export default () => {
       <Stack.Screen
         name="Attendance"
         component={Attendance}
-        options={{ title: "", headerBackTitleVisible: false }}
+        options={{ title: "", headerTitleAlign:"center", headerBackTitleVisible: false }}
       />
       <Stack.Screen
         name="AddClass"
         component={AddClass}
-        options={{ title: "", headerBackTitleVisible: false }}
+        options={{ title: "수업추가", headerTitleAlign: "center"}}
       />
       <Stack.Screen
         name="WriteStudentId"
         component={WriteStudentId}
-        options={{ title: "", headerBackTitleVisible: false }}
+        // options={{ title: "", headerTitleAlign:"center", headerBackTitleVisible: false }}
+        options={{ title: "학번수정", headerTitleAlign: "center"}}
       />
     </Stack.Navigator>
   );

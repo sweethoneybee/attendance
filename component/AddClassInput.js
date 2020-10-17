@@ -54,13 +54,12 @@ const styles = StyleSheet.create({
   },
   input: {
     height: "120%",
-    // borderColor: "black",
     borderBottomWidth: 1.2,
     paddingLeft: 10,
     borderRadius: 10,
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 20,
-    marginTop: "2%"
+    marginTop: "2%",
     // backgroundColor: "red"
   },
   feedBack: {
@@ -70,6 +69,5 @@ const styles = StyleSheet.create({
     color: "red",
     opacity:0.9,
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
-    marginBottom: "1%"
   }
 });

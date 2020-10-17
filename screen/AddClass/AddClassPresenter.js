@@ -6,7 +6,7 @@ import BasicButton from "../../component/BasicButton";
 
 export default ({ onPress, titles, onChangeText, value }) => {
   return (
-    <ScreenContainer title={"이얏호우"}>
+    <ScreenContainer title={""}>
         <View style={styles.mainContainer}>
           <Input
             title={titles[0]}
@@ -65,9 +65,8 @@ export default ({ onPress, titles, onChangeText, value }) => {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    // alignItems: "center",
     height: "23%",
-    width: "100%"
+    width: "100%",
   },
   button: {
     marginLeft: "30%",
