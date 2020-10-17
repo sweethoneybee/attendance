@@ -8,30 +8,17 @@ export default ({ onChangeText, value, onPress }) => {
     <View style={styles.main}>
       <View style={{ height: "25%" }} />
       <Text style={styles.title}>학번</Text>
-      {/* <TextInput
-        style={styles.input}
-        onChangeText={(text) => {
-          onChangeText(text);
-          console.log(text);
-        }}
-        placeholder={value}
-        autoCorrect={false}
-        maxLength={10}
-      /> */}
       <Input
           title={""}
           onChangeText={onChangeText}
           value={value}
           maxLength={10}
-          feedBack={"\"숫자 5자\"로 적어주세요"}
+          feedBack={"\"숫자 10자\"로 적어주세요"}
           isValidText={
-            (text) => (text.match(/\d{5}/) !== null ? true : false)
+            (text) => (text.match(/\d{10}/) !== null ? true : false)
           }
           inputStyle={styles.input}
-          /*
-           **  regex
-           **  \d{5}
-           */
+          feedBackStyle={{marginLeft: "5%"}}
         />
       <BasicButton style={styles.button} onPress={onPress}>
         <View style={{
@@ -53,7 +40,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 38,
-    marginLeft: "5%",
+    marginLeft: "8%",
   },
   button: {
     alignItems: "center",

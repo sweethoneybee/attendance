@@ -8,8 +8,8 @@ export default ({ navigation, route }) => {
   const [studentId, setStudentId] = useState("10글자");
 
   const confirmOnPress = async () => {
-    // await AsyncStorage.setItem("StudentId", studentId);
-    // await AsyncStorage.setItem("ClassList", JSON.stringify({}));
+    await AsyncStorage.setItem("StudentId", studentId);
+    await AsyncStorage.setItem("ClassList", JSON.stringify({}));
     setStudentId("10글자");
     navigation.navigate("Tabs")
   }
@@ -19,6 +19,15 @@ export default ({ navigation, route }) => {
   const onPress = () => {
     console.log("학번수정하기 버튼 눌림");
     if(studentId.match(/\d{10}/) === null){
+      Alert.alert(
+        "잘못된 학번",
+        "학번 양식에 맞게 적어주세요",
+        [
+          {
+            text: "힝 알겠어요"
+          }
+        ]
+      )
       return;
     }
     CreateTwoButtonAlert({

@@ -25,9 +25,11 @@ export default ({ navigation, route }) => {
       Alert.alert(
         "잘못된 수업 정보",
         "양식에 맞게 적어주세요",
-        {
-          text: "네",
-        },
+        [
+          {
+            text: "힝 알겠어요",
+          },
+        ]
       );
       return;
     }

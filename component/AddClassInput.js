@@ -8,6 +8,7 @@ export default ({
   maxLength = 20,
   inputStyle,
   feedBack = "잘못된 형식을 입력했습니다",
+  feedBackStyle,
   isValidText,
 }) => {
   const [changingFeedBack, setChangingFeedBack] = useState(feedBack);
@@ -35,7 +36,9 @@ export default ({
       maxLength={maxLength}
       autoCapitalize={"characters"}
     />
-    <Text style={changeFontColor ? {...styles.feedBack, color: "#0984e3"} : styles.feedBack }>{changingFeedBack}</Text>
+    <Text style={changeFontColor 
+    ? {...styles.feedBack, ...feedBackStyle, color: "#0984e3"} 
+    : {...styles.feedBack, ...feedBackStyle} }>{changingFeedBack}</Text>
   </View>
   );
 }
