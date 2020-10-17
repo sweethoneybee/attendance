@@ -18,6 +18,9 @@ export default ({ navigation, route }) => {
   }
   const onPress = () => {
     console.log("학번수정하기 버튼 눌림");
+    if(studentId.match(/\d{10}/) === null){
+      return;
+    }
     CreateTwoButtonAlert({
         title: studentId, 
         message: "위의 학번으로 수정하시겠습니까?\n(수정 시 수업목록이 초기화됩니다)",

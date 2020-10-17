@@ -6,7 +6,7 @@ export default ({
   onChangeText,
   value,
   maxLength = 20,
-  inputStyle = styles.input,
+  inputStyle,
   feedBack = "잘못된 형식을 입력했습니다",
   isValidText,
 }) => {
@@ -16,7 +16,7 @@ export default ({
   <View style={styles.mainContainer}>
     <Text style={styles.inputTitle}>{title}</Text>
     <TextInput
-      style={inputStyle}
+      style={{...styles.input, ...inputStyle}}
       onChangeText={(text) => {
         console.log("여기서 텍스트:"+ text);
         onChangeText(text);
@@ -43,22 +43,25 @@ export default ({
 const styles = StyleSheet.create({
   mainContainer: {
     // width: "100%",
-    // height: "100%",
-    marginBottom: "5%"
+    height: "23%",
+    // marginBottom: "5%",
+    // backgroundColor: "blue"
   },
   inputTitle: {
-    fontSize: 24,
+    fontSize: 20,
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
-    paddingLeft: 5,
-    paddingBottom: 10,
+    paddingLeft: "4%",
   },
   input: {
-    height: 40,
-    borderColor: "black",
-    borderWidth: 1.5,
-    padding: 10,
+    height: "120%",
+    // borderColor: "black",
+    borderBottomWidth: 1.2,
+    paddingLeft: 10,
     borderRadius: 10,
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
+    fontSize: 20,
+    marginTop: "2%"
+    // backgroundColor: "red"
   },
   feedBack: {
     fontSize: 12,
@@ -67,5 +70,6 @@ const styles = StyleSheet.create({
     color: "red",
     opacity:0.9,
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
+    marginBottom: "1%"
   }
 });

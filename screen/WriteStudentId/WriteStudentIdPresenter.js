@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import BasicButton from "../../component/BasicButton";
+import Input from "../../component/AddClassInput";
 
 export default ({ onChangeText, value, onPress }) => {
   return (
     <View style={styles.main}>
       <View style={{ height: "25%" }} />
       <Text style={styles.title}>학번</Text>
-      <TextInput
+      {/* <TextInput
         style={styles.input}
         onChangeText={(text) => {
           onChangeText(text);
@@ -16,9 +17,29 @@ export default ({ onChangeText, value, onPress }) => {
         placeholder={value}
         autoCorrect={false}
         maxLength={10}
-      />
+      /> */}
+      <Input
+          title={""}
+          onChangeText={onChangeText}
+          value={value}
+          maxLength={10}
+          feedBack={"\"숫자 5자\"로 적어주세요"}
+          isValidText={
+            (text) => (text.match(/\d{5}/) !== null ? true : false)
+          }
+          inputStyle={styles.input}
+          /*
+           **  regex
+           **  \d{5}
+           */
+        />
       <BasicButton style={styles.button} onPress={onPress}>
-        <Text style={styles.buttonText}>{"수정하기"}</Text>
+        <View style={{
+          borderBottomWidth: 2,
+          borderColor: "black"
+        }}>
+          <Text style={styles.buttonText}>{"수정하기"}</Text>
+        </View>
       </BasicButton>
     </View>
   );
@@ -47,16 +68,17 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
-    fontSize: 20
+    fontSize: 20,
+    borderBottomWidth: 27
   },
   input: {
-    borderColor: "black",
+    borderBottomColor: "black",
     borderBottomWidth: 0.7,
     width: "80%",
     height: 40,
-    marginTop: "5%",
-    marginBottom: "2%",
+    // marginTop: "5%",
+    // marginBottom: "2%",
     marginLeft: "5%",
-    fontSize: 30,
+    fontSize: 20,
   },
 });
