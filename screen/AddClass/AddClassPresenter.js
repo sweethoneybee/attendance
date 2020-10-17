@@ -4,7 +4,7 @@ import Input from "../../component/AddClassInput";
 import ScreenContainer from "../../component/ScreenContainer";
 import BasicButton from "../../component/BasicButton";
 
-export default ({ onPress, titles, onChangeText, value, buttonText }) => {
+export default ({ onPress, titles, onChangeText, value }) => {
   return (
     <ScreenContainer title={"이얏호우"}>
       <View style={styles.mainContainer}>
@@ -47,7 +47,12 @@ export default ({ onPress, titles, onChangeText, value, buttonText }) => {
           }
         />
         <BasicButton onPress={onPress} style={styles.button}>
-          <Text style={styles.buttonText}>{buttonText}</Text>
+          <View style={{
+            borderBottomColor: "black",
+            borderBottomWidth: 2,
+          }}>
+            <Text style={styles.buttonText}>{"수업 추가"}</Text>
+          </View>
         </BasicButton>
       </View>
     </ScreenContainer>
@@ -66,5 +71,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
+    fontSize: 18,
+    borderBottomWidth: 6,
   }
 });

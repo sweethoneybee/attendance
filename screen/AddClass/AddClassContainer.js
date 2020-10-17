@@ -59,7 +59,6 @@ export default ({ navigation, route }) => {
       titles={titles}
       onChangeText={setFunc}
       value={stateValue}
-      buttonText={"수업추가"}
     />
   );
 };

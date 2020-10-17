@@ -12,7 +12,7 @@ export default ({ style, children, onPress }) => (
 const styles = StyleSheet.create({
   button: {
     alignItems: "center",
-    backgroundColor: "#3498db",
+    // backgroundColor: "#3498db",
     padding: 10,
     // width: "40%",
     // borderRadius: 10

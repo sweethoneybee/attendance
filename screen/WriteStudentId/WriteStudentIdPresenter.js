@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: "#3498db",
+    // backgroundColor: "#3498db",
     borderRadius: 10,
     width: "25%",
     height: "5%",
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
-    fontSize: 14
+    fontSize: 20
   },
   input: {
     borderColor: "black",
