@@ -14,34 +14,39 @@ export default ({
   const [changingFeedBack, setChangingFeedBack] = useState(feedBack);
   const [changeFontColor, setChangeFontColor] = useState(false);
   return (
-  <View style={styles.mainContainer}>
-    <Text style={styles.inputTitle}>{title}</Text>
-    <TextInput
-      style={{...styles.input, ...inputStyle}}
-      onChangeText={(text) => {
-        console.log("여기서 텍스트:"+ text);
-        onChangeText(text);
-        if (isValidText(text) === true) {
-          setChangingFeedBack("좋아요!");
-          setChangeFontColor(true);
+    <View style={styles.mainContainer}>
+      <Text style={styles.inputTitle}>{title}</Text>
+      <TextInput
+        style={{ ...styles.input, ...inputStyle }}
+        onChangeText={(text) => {
+          console.log("여기서 텍스트:" + text);
+          onChangeText(text);
+          if (isValidText(text) === true) {
+            setChangingFeedBack("좋아요!");
+            setChangeFontColor(true);
+          } else {
+            setChangingFeedBack(feedBack);
+            setChangeFontColor(false);
+          }
+          console.log(text);
+        }}
+        placeholder={value}
+        autoCorrect={false}
+        maxLength={maxLength}
+        autoCapitalize={"characters"}
+      />
+      <Text
+        style={
+          changeFontColor
+            ? { ...styles.feedBack, ...feedBackStyle, color: "#0984e3" }
+            : { ...styles.feedBack, ...feedBackStyle }
         }
-        else {
-          setChangingFeedBack(feedBack);
-          setChangeFontColor(false);
-        }
-        console.log(text);
-      }}
-      placeholder={value}
-      autoCorrect={false}
-      maxLength={maxLength}
-      autoCapitalize={"characters"}
-    />
-    <Text style={changeFontColor 
-    ? {...styles.feedBack, ...feedBackStyle, color: "#0984e3"} 
-    : {...styles.feedBack, ...feedBackStyle} }>{changingFeedBack}</Text>
-  </View>
+      >
+        {changingFeedBack}
+      </Text>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -70,7 +75,7 @@ const styles = StyleSheet.create({
     paddingTop: "1%",
     paddingLeft: "3%",
     color: "red",
-    opacity:0.9,
+    opacity: 0.9,
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
-  }
+  },
 });

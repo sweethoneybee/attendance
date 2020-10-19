@@ -3,6 +3,7 @@ import { Text, Platform, StyleSheet } from "react-native";
 import ScrollContainer from "../../component/ScrollContainer";
 import ClassContainer from "../../component/ClassContainer";
 import AddClassButton from "../../component/AddClassButton";
+import { SwipeListView } from "react-native-swipe-list-view";
 
 export default ({
   navigation,

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   main: { width: "100%", height: "100%" },
   button: {
     alignItems: "flex-start",
-    padding:0,
+    padding: 0,
     backgroundColor: "white",
     height: "15%",
     marginTop: "0.4%",

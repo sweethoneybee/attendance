@@ -9,22 +9,22 @@ export default ({ onChangeText, value, onPress }) => {
       <View style={{ height: "25%" }} />
       <Text style={styles.title}>학번</Text>
       <Input
-          title={""}
-          onChangeText={onChangeText}
-          value={value}
-          maxLength={10}
-          feedBack={"\"숫자 10자\"로 적어주세요"}
-          isValidText={
-            (text) => (text.match(/\d{10}/) !== null ? true : false)
-          }
-          inputStyle={styles.input}
-          feedBackStyle={{marginLeft: "5%"}}
-        />
+        title={""}
+        onChangeText={onChangeText}
+        value={value}
+        maxLength={10}
+        feedBack={'"숫자 10자"로 적어주세요'}
+        isValidText={(text) => (text.match(/\d{10}/) !== null ? true : false)}
+        inputStyle={styles.input}
+        feedBackStyle={{ marginLeft: "5%" }}
+      />
       <BasicButton style={styles.button} onPress={onPress}>
-        <View style={{
-          borderBottomWidth: 2,
-          borderColor: "black"
-        }}>
+        <View
+          style={{
+            borderBottomWidth: 2,
+            borderColor: "black",
+          }}
+        >
           <Text style={styles.buttonText}>{"수정하기"}</Text>
         </View>
       </BasicButton>
@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
     paddingTop: "2%",
     marginLeft: "37%",
     marginTop: "2%",
-    padding: 0
+    padding: 0,
   },
   buttonText: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 20,
-    borderBottomWidth: 27
+    borderBottomWidth: 27,
   },
   input: {
     borderBottomColor: "black",
