@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Text, Platform, StyleSheet } from "react-native";
+import React from "react";
+import { View, Text, Platform, StyleSheet } from "react-native";
 import ScrollContainer from "../../component/ScrollContainer";
 import ClassContainer from "../../component/ClassContainer";
 import AddClassButton from "../../component/AddClassButton";
@@ -22,9 +22,22 @@ export default ({
         {attendanceDataOfClasses.length === 0 ? (
           <Text>아직 수업이 등록되지 않았습니다 </Text>
         ) : (
-          attendanceDataOfClasses.map((classData) => (
-            <ClassContainer key={classData.className} {...classData} />
-          ))
+          <SwipeListView
+            data={attendanceDataOfClasses}
+            renderItem={(data, rowMap) => (
+              <View>
+                <Text>수업이름: {data.item.className}</Text>
+              </View>
+            )}
+            renderHiddenItem={(data, rowMap) => (
+              <View>
+                <Text>왼쪽</Text>
+                <Text>오른쪽</Text>
+              </View>
+            )}
+            leftOpenValue={75}
+            rightOpenValue={-75}
+          />
         )}
       </ScrollContainer>
       <AddClassButton

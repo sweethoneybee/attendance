@@ -67,7 +67,7 @@ export default ({ navigation, route }) => {
 
   const setRenderingData = async () => {
     let classList, studentId, attendanceDataOfClasses;
-    attendanceDataOfClasses = [];
+    attendanceDataOfClasses = Array();
     try {
       classList = await AsyncStorage.getItem("ClassList");
       classList = classList !== null ? JSON.parse(classList) : null;
@@ -81,6 +81,9 @@ export default ({ navigation, route }) => {
 
     if (classList !== null && studentId !== null) {
       await makeAttendanceData(classList, studentId, attendanceDataOfClasses);
+      attendanceDataOfClasses.map((value, i) => {
+        value.key = i;
+      });
       setClasses({
         loading: false,
         attendanceDataOfClasses,
