@@ -51,6 +51,7 @@ const makeAttendanceData = async (
     let pass = absentCount === 0 ? true : false;
     attendanceDataOfClasses.push({
       className,
+      classId,
       lectures,
       absentCount,
       pass,
@@ -61,9 +62,9 @@ const makeAttendanceData = async (
 export default ({ navigation, route }) => {
   const [classes, setClasses] = useState({
     loading: true,
-    attendanceDataOfClasses: [],
     studentId: "",
   });
+  const [attendanceDataOfClasses, setAttendanceDataOfClasses] = useState([]);
 
   const setRenderingData = async () => {
     let classList, studentId, attendanceDataOfClasses;
@@ -89,13 +90,14 @@ export default ({ navigation, route }) => {
         attendanceDataOfClasses,
         studentId,
       });
+      setAttendanceDataOfClasses(attendanceDataOfClasses);
     } else {
       console.log("아무 강의도 등록되지 않았음");
       setClasses({
         loading: false,
-        attendanceDataOfClasses,
         studentId,
       });
+      setAttendanceDataOfClasses(attendanceDataOfClasses);
     }
   };
 
@@ -108,6 +110,8 @@ export default ({ navigation, route }) => {
       route={route}
       refreshFn={setRenderingData}
       {...classes}
+      attendanceDataOfClasses={attendanceDataOfClasses}
+      setAttendanceDataOfClasses={setAttendanceDataOfClasses}
     />
   );
 };
