@@ -63,7 +63,10 @@ export default ({
       underlayColor={"#AAA"}
     >
       <View>
-        <Text>수업이름: {data.item.className}</Text>
+        <Text>
+          수업이름: {data.item.className}. {data.item.lectures.length} 개 중{" "}
+          {data.item.lectures.length - data.item.absentCount}개 수강완료
+        </Text>
       </View>
     </TouchableHighlight>
   );
