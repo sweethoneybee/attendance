@@ -58,7 +58,10 @@ export default ({
 
   const renderItem = (data) => (
     <TouchableHighlight
-      onPress={() => console.log("You touched me")}
+      onPress={() => {
+        console.log("You touched me");
+        navigation.navigate("Attendance", { classInfo: data.item });
+      }}
       style={styles.rowFront}
       underlayColor={"#AAA"}
     >
