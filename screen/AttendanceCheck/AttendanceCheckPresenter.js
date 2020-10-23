@@ -63,10 +63,11 @@ export default ({
         navigation.navigate("Attendance", { classInfo: data.item });
       }}
       style={styles.rowFront}
-      underlayColor={"#AAA"}
+      // underlayColor={"#AAA"}
+      underlayColor={"#dfe4ea"}
     >
       <View>
-        <Text>
+        <Text style={styles.lectureData}>
           수업이름: {data.item.className}. {data.item.lectures.length} 개 중{" "}
           {data.item.lectures.length - data.item.absentCount}개 수강완료
         </Text>
@@ -105,7 +106,6 @@ export default ({
             data={attendanceDataOfClasses}
             renderItem={renderItem}
             renderHiddenItem={renderHiddenItem}
-            leftOpenValue={75}
             rightOpenValue={-75}
             previewRowKey={"0"}
             previewOpenValue={-40}
@@ -134,15 +134,17 @@ const styles = StyleSheet.create({
   },
   rowFront: {
     alignItems: "flex-start",
-    backgroundColor: "#CCA",
+    // backgroundColor: "#CCA",
+    backgroundColor: "white",
     borderBottomColor: "black",
-    borderBottomWidth: 1,
+
     justifyContent: "center",
     height: 50,
   },
   rowBack: {
     alignItems: "center",
-    backgroundColor: "#DDD",
+    // backgroundColor: "#DDD",
+    backgroundColor: "white",
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -167,12 +169,18 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
     fontSize: 26,
-    textAlign: "center",
+    paddingTop: "5%",
+    paddingLeft: "5%",
+    marginBottom: "3%",
   },
   directive: {
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
     fontSize: 15,
     textAlign: "center",
+  },
+  lectureData: {
+    fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
+    paddingLeft: "5%",
   },
 });
 // const styles = StyleSheet.create({
