@@ -7,5 +7,5 @@ export default ({
     params: { classInfo },
   },
 }) => {
-  return <AttendancePresenter classInfo={classInfo} />;
+  return <AttendancePresenter {...classInfo} />;
 };
