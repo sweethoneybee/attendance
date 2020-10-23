@@ -39,7 +39,7 @@ const makeAttendanceData = async (
         let lecture = {
           name: oneLectureObj["컨텐츠명"],
           contentTime: oneLectureObj["컨텐츠시간"],
-          passedTime: oneLectureObj["학습인정시간"],
+          passedTime: oneLectureObj["학습한시간"],
         };
         console.log("등록한 lecture name: " + lecture.name);
         if (oneLectureObj["온라인출석상태(P/F)"] === "F") {
