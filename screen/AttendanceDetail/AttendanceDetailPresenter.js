@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
-    fontSize: 20,
+    fontSize: 19,
     marginBottom: "2%",
   },
   subTitle: {

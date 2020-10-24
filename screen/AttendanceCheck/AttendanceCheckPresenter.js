@@ -65,9 +65,9 @@ export default ({
       // underlayColor={"#AAA"}
       underlayColor={"#dfe4ea"}
     >
-      <View>
+      <View style={{ paddingVertical: "1.5%" }}>
         <Text style={styles.lectureTitle}>[{data.item.className}]</Text>
-        <View style={{ flexDirection: "row", marginBottom: "5%" }}>
+        <View style={{ flexDirection: "row" }}>
           <Text
             style={{
               ...styles.lectureData,
@@ -196,7 +196,8 @@ const styles = StyleSheet.create({
   lectureTitle: {
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
     paddingLeft: "5%",
-    marginBottom: "2%",
+    // marginBottom: "2%",
+    paddingVertical: "2%",
     fontSize: 19,
   },
   lectureData: {
