@@ -67,10 +67,23 @@ export default ({
       underlayColor={"#dfe4ea"}
     >
       <View>
-        <Text style={styles.lectureData}>
-          수업이름: {data.item.className}. {data.item.lectures.length} 개 중{" "}
-          {data.item.lectures.length - data.item.absentCount}개 수강완료
-        </Text>
+        <Text style={styles.lectureTitle}>[{data.item.className}]</Text>
+        <View style={{ flexDirection: "row", marginBottom: "5%" }}>
+          <Text
+            style={{
+              ...styles.lectureData,
+              color: "blue",
+              paddingLeft: "8%",
+            }}
+          >
+            {data.item.lectures.length}
+          </Text>
+          <Text style={{ ...styles.lectureData }}>{" 개 중 "}</Text>
+          <Text style={{ ...styles.lectureData, color: "red" }}>
+            {data.item.lectures.length - data.item.absentCount}
+          </Text>
+          <Text style={{ ...styles.lectureData }}>{" 개 수강 완료"}</Text>
+        </View>
       </View>
     </TouchableHighlight>
   );
@@ -91,11 +104,11 @@ export default ({
     <View style={styles.container}>
       <ScrollContainer refreshFn={refreshFn} loading={loading}>
         {studentId === "" ? (
-          <Text style={styles.title}>
+          <Text style={styles.studentId}>
             ["설정-나의 학번"에서 학번을 등록해주세요!]
           </Text>
         ) : (
-          <Text style={styles.title}>{studentId}</Text>
+          <Text style={styles.studentId}>{studentId}</Text>
         )}
         {attendanceDataOfClasses.length === 0 ? (
           <Text style={styles.directive}>
@@ -139,7 +152,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "black",
 
     justifyContent: "center",
-    height: 50,
+    // height: "10%",
   },
   rowBack: {
     alignItems: "center",
@@ -149,6 +162,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingLeft: 15,
+    // height: "100%",
   },
   backRightBtn: {
     alignItems: "center",
@@ -157,16 +171,18 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     width: 75,
+    // height: "100%",
   },
   backRightBtnLeft: {
     backgroundColor: "blue",
     right: 75,
+    // height: "100%",
   },
   backRightBtnRight: {
     backgroundColor: "red",
     right: 0,
   },
-  title: {
+  studentId: {
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
     fontSize: 26,
     paddingTop: "5%",
@@ -176,32 +192,16 @@ const styles = StyleSheet.create({
   directive: {
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
     fontSize: 15,
-    textAlign: "center",
+    paddingLeft: "5%",
+  },
+  lectureTitle: {
+    fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
+    paddingLeft: "5%",
+    marginBottom: "2%",
+    fontSize: 19,
   },
   lectureData: {
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
-    paddingLeft: "5%",
+    fontSize: 16,
   },
 });
-// const styles = StyleSheet.create({
-//   title: {
-//     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
-//     fontSize: 26,
-//     textAlign: "center",
-//   },
-//   classContainer: {
-//     flexDirection: "row",
-//     justifyContent: "center",
-//     marginVertical: 50,
-//     flexWrap: "wrap",
-//   },
-//   switch: {
-//     alignItems: "center",
-//     borderWidth: 2,
-//     borderColor: "black",
-//     marginVertical: 2,
-//     paddingVertical: 10,
-//     // width: Dimensions.get("window").width / 3,
-//     backgroundColor: "blue",
-//   },
-// });

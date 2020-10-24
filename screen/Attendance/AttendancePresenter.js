@@ -47,11 +47,7 @@ export default ({ className, classId, lectures, absentCount, pass }) => {
                 <Text
                   style={{
                     ...styles.info,
-                    textAlign: "right",
-                    fontSize: 15,
-                    position: "absolute",
-                    top: "70%",
-                    left: "80%",
+                    ...styles.isPassed,
                   }}
                 >
                   출석인정: {lecture.check === true ? "🔆" : "❌"}
@@ -101,5 +97,12 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     color: "white",
     // opacity: 0.9,
+  },
+  isPassed: {
+    textAlign: "right",
+    fontSize: 15,
+    position: "absolute",
+    top: "70%",
+    left: "80%",
   },
 });
