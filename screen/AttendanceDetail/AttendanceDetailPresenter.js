@@ -13,10 +13,28 @@ export default ({ className, classId, lectures, absentCount, pass }) => {
   return (
     <View stlye={styles.main}>
       <ScrollView style={{}}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>
-            {className} ({lectures.length - absentCount} / {lectures.length})
-          </Text>
+        <View style={{ ...styles.titleContainer }}>
+          <Text style={styles.title}>[{className}]</Text>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <Text
+              style={{
+                ...styles.subTitle,
+                color: "blue",
+                paddingLeft: "1.5%",
+              }}
+            >
+              {lectures.length}
+            </Text>
+            <Text style={{ ...styles.subTitle }}>{" 개 중 "}</Text>
+            <Text style={{ ...styles.subTitle, color: "red" }}>
+              {lectures.length - absentCount}
+            </Text>
+            <Text style={{ ...styles.subTitle }}>{" 개 수강 완료"}</Text>
+          </View>
         </View>
         {lectures
           .slice(0)
@@ -81,7 +99,11 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
     fontSize: 20,
-    textAlign: "center",
+    marginBottom: "2%",
+  },
+  subTitle: {
+    fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
+    fontSize: 14,
   },
   infoContainer: {
     marginTop: "0%",

@@ -72,7 +72,7 @@ export default ({
             style={{
               ...styles.lectureData,
               color: "blue",
-              paddingLeft: "8%",
+              paddingLeft: "6%",
             }}
           >
             {data.item.lectures.length}
