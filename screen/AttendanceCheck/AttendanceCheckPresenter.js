@@ -7,7 +7,6 @@ import {
   View,
 } from "react-native";
 import ScrollContainer from "../../component/ScrollContainer";
-import ClassContainer from "../../component/ClassContainer";
 import AddClassButton from "../../component/AddClassButton";
 import { SwipeListView } from "react-native-swipe-list-view";
 import AsyncStorage from "@react-native-community/async-storage";
@@ -60,7 +59,7 @@ export default ({
     <TouchableHighlight
       onPress={() => {
         console.log("You touched me");
-        navigation.navigate("Attendance", { classInfo: data.item });
+        navigation.navigate("AttendanceDetail", { classInfo: data.item });
       }}
       style={styles.rowFront}
       // underlayColor={"#AAA"}

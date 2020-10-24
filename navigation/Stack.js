@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import Attendance from "../screen/Attendance";
+import AttendanceDetail from "../screen/AttendanceDetail";
 import AddClass from "../screen/AddClass";
 import WriteStudentId from "../screen/WriteStudentId";
 import Tabs from "../navigation/Tabs";
@@ -25,8 +25,8 @@ export default () => {
     <Stack.Navigator screenOptions={headerOptions}>
       <Stack.Screen name="Tabs" component={Tabs} />
       <Stack.Screen
-        name="Attendance"
-        component={Attendance}
+        name="AttendanceDetail"
+        component={AttendanceDetail}
         options={{
           title: "",
           headerTitleAlign: "center",
