@@ -27,11 +27,7 @@ export default () => {
       <Stack.Screen
         name="AttendanceDetail"
         component={AttendanceDetail}
-        options={{
-          title: "",
-          headerTitleAlign: "center",
-          headerBackTitleVisible: false,
-        }}
+        options={{ title: "상세정보", headerTitleAlign: "center" }}
       />
       <Stack.Screen
         name="AddClass"
@@ -41,24 +37,8 @@ export default () => {
       <Stack.Screen
         name="WriteStudentId"
         component={WriteStudentId}
-        // options={{ title: "", headerTitleAlign:"center", headerBackTitleVisible: false }}
         options={{ title: "학번수정", headerTitleAlign: "center" }}
       />
     </Stack.Navigator>
   );
 };
-
-// export default () => {
-//   return (
-//     <Stack.Navigator screenOptions={headerOptions}>
-//       <Stack.Screen
-//         name="ClassList"
-//         component={ClassList}
-//         options={{
-//           headerShown: true,
-//           title: "수업목록",
-//         }}
-//       />
-//     </Stack.Navigator>
-//   );
-// };

@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Alert } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
-import WriteStudentIdPresenter from "./WriteStudentIdPresenter";
+import FirtsStartPresenter from "./FirtsStartPresenter";
 import CreateTwoButtonAlert from "../../component/CreateTwoButtonAlert";
+import AsyncStorage from "@react-native-community/async-storage";
 
-export default ({ navigation, route }) => {
+export default ({ setStudentIdIsReady }) => {
   const [studentId, setStudentId] = useState("10글자");
-
   const confirmOnPress = async () => {
     await AsyncStorage.setItem("StudentId", studentId);
     await AsyncStorage.setItem("ClassList", JSON.stringify({}));
-    setStudentId("10글자");
-    navigation.navigate("Tabs");
+    setStudentIdIsReady(true);
   };
   const denyOnPress = () => {
     // do nothing
@@ -27,8 +25,7 @@ export default ({ navigation, route }) => {
     }
     CreateTwoButtonAlert({
       title: studentId,
-      message:
-        "위의 학번으로 적용하시겠습니까?\n(수정 시 수업목록이 초기화됩니다)",
+      message: "위의 학번으로 적용하시겠습니까?",
       confirmMessage: "좋아요",
       denyMessage: "싫어요",
       confirmOnPress,
@@ -36,7 +33,7 @@ export default ({ navigation, route }) => {
     });
   };
   return (
-    <WriteStudentIdPresenter
+    <FirtsStartPresenter
       onChangeText={setStudentId}
       value={studentId}
       onPress={onPress}

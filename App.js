@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import AsyncStorage from "@react-native-community/async-storage";
+import FirstStart from "./screen/FirstStart";
 
 import Stack from "./navigation/Stack";
 
@@ -14,8 +15,15 @@ const cacheFonrts = (fonts) => {
   return fonts.map((font) => Font.loadAsync(font));
 };
 
+const getDataFromAsyncStorage = async (dataName) => {
+  try {
+    return await AsyncStorage.getItem(dataName);
+  } catch (e) {}
+};
 export default function App() {
   const [assetIsReady, setAssetIsReady] = useState(false);
+
+  const [studentIdIsReady, setStudentIdIsReady] = useState(false);
 
   const [fontsLoaded] = Font.useFonts({
     Maple_ttf: require("./assets/Maplestory_Light.ttf"),
@@ -28,24 +36,32 @@ export default function App() {
     const fontAssets = cacheFonrts([FontAwesome.font]);
     //for Test
     let classList = {};
-    // classList["ITE203711821"] = "객체지향";
-    // classList["EDU308010529"] = "학폭이";
-    // classList["DEE203510528"] = "영어강의";
     // await AsyncStorage.setItem("StudentId", "2016047756");
     await AsyncStorage.setItem("StudentId", "2016047883");
+    // await AsyncStorage.removeItem("StudentId");
     await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
+
+    // real logic
+    const id = await getDataFromAsyncStorage("StudentId");
+    if (id !== null) {
+      setStudentIdIsReady(true);
+    }
     await Promise.all([...fontAssets]);
   };
 
   if (assetIsReady && fontsLoaded) {
-    return (
-      <>
-        <NavigationContainer>
-          <Stack />
-        </NavigationContainer>
-        <StatusBar barStyle="light-content" />
-      </>
-    );
+    if (!studentIdIsReady) {
+      return <FirstStart setStudentIdIsReady={setStudentIdIsReady} />;
+    } else {
+      return (
+        <>
+          <NavigationContainer>
+            <Stack />
+          </NavigationContainer>
+          <StatusBar barStyle="light-content" />
+        </>
+      );
+    }
   } else {
     return (
       <AppLoading
