@@ -10,6 +10,7 @@ export default ({
   feedBack = "잘못된 형식을 입력했습니다",
   feedBackStyle,
   isValidText,
+  keyboardType,
 }) => {
   const [changingFeedBack, setChangingFeedBack] = useState(feedBack);
   const [changeFontColor, setChangeFontColor] = useState(false);
@@ -34,6 +35,7 @@ export default ({
         autoCorrect={false}
         maxLength={maxLength}
         autoCapitalize={"characters"}
+        keyboardType={keyboardType}
       />
       <Text
         style={

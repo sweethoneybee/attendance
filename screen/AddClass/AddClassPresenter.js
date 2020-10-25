@@ -31,6 +31,7 @@ export default ({ onPress, titles, onChangeText, value }) => {
           maxLength={5}
           feedBack={'"숫자 5자"로 적어주세요'}
           isValidText={(text) => (text.match(/\d{5}/) !== null ? true : false)}
+          keyboardType={"number-pad"}
           /*
            **  regex
            **  \d{5}

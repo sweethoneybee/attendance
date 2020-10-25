@@ -17,6 +17,7 @@ export default ({ onChangeText, value, onPress }) => {
         isValidText={(text) => (text.match(/\d{10}/) !== null ? true : false)}
         inputStyle={styles.input}
         feedBackStyle={{ marginLeft: "5%" }}
+        keyboardType={"number-pad"}
       />
       <BasicButton style={styles.button} onPress={onPress}>
         <View
@@ -25,7 +26,7 @@ export default ({ onChangeText, value, onPress }) => {
             borderColor: "black",
           }}
         >
-          <Text style={styles.buttonText}>{"수정하기"}</Text>
+          <Text style={styles.buttonText}>{"적용하기"}</Text>
         </View>
       </BasicButton>
     </View>
