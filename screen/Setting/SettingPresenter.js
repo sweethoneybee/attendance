@@ -26,7 +26,7 @@ export default ({ navigation, onClick }) => {
       <BasicButton
         style={styles.button}
         onPress={() => {
-          console.log("임시 온프레스");
+          navigation.navigate("Github");
         }}
       >
         <Text style={styles.buttonText}>{"깃헙"}</Text>
