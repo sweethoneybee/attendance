@@ -6,8 +6,8 @@ import BasicButton from "../../component/BasicButton";
 
 export default ({ onPress, titles, onChangeText, value }) => {
   return (
-    <ScreenContainer title={""}>
-      <View style={styles.mainContainer}>
+    <View style={styles.mainContainer}>
+      <View style={styles.inputContainer}>
         <Input
           title={titles[0]}
           onChangeText={onChangeText[0]}
@@ -23,7 +23,7 @@ export default ({ onPress, titles, onChangeText, value }) => {
            */
         />
       </View>
-      <View style={styles.mainContainer}>
+      <View style={styles.inputContainer}>
         <Input
           title={titles[1]}
           onChangeText={onChangeText[1]}
@@ -38,7 +38,7 @@ export default ({ onPress, titles, onChangeText, value }) => {
            */
         />
       </View>
-      <View style={styles.mainContainer}>
+      <View style={styles.inputContainer}>
         <Input
           title={titles[2]}
           onChangeText={onChangeText[2]}
@@ -60,14 +60,21 @@ export default ({ onPress, titles, onChangeText, value }) => {
           <Text style={styles.buttonText}>{"수업 추가"}</Text>
         </View>
       </BasicButton>
-    </ScreenContainer>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   mainContainer: {
-    height: "23%",
+    height: "100%",
     width: "100%",
+    backgroundColor: "white",
+    padding: "8%",
+  },
+  inputContainer: {
+    height: "16%",
+    width: "100%",
+    // backgroundColor: "yellow",
   },
   button: {
     marginLeft: "30%",

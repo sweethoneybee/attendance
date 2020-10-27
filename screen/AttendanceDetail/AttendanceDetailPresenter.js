@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
-import ScrollContainer from "../../component/ScrollContainer";
 export default ({ className, classId, lectures, absentCount, pass }) => {
   const presentLecture = (lecture) => {
     return (

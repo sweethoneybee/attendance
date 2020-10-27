@@ -43,7 +43,7 @@ export default () => {
       <Stack.Screen
         name="Github"
         component={Github}
-        options={{ title: "깃허브", headerTitleAlign: "center" }}
+        options={{ title: "깃헙", headerTitleAlign: "center" }}
       />
     </Stack.Navigator>
   );
