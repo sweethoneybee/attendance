@@ -4,16 +4,20 @@ import { View, Text, StyleSheet } from "react-native";
 export default ({ title, children }) => (
   <View style={styles.mainContainer}>
     <Text style={styles.titleContainer}>{title}</Text>
-    <View style={{ margin: "5%" }}>{children}</View>
+    <View style={styles.childrenContainer}>{children}</View>
   </View>
 );
 
 const styles = StyleSheet.create({
-  mainContainer: { height: "100%", backgroundColor: "white" },
+  mainContainer: { height: "100%", width: "100%", backgroundColor: "white" },
   titleContainer: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
-    fontSize: 24,
+    fontSize: 32,
     textAlign: "center",
-    // marginTop: "%",
+    marginTop: "45%",
+  },
+  childrenContainer: {
+    fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
+    fontSize: 22,
   },
 });

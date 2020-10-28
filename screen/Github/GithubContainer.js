@@ -2,5 +2,6 @@ import React from "react";
 import GithubPresenter from "./GithubPresenter";
 
 export default ({ navigation, route }) => {
-  return <GithubPresenter />;
+  const githubLink = "https://github.com/sweethoneybee";
+  return <GithubPresenter githubLink={githubLink} />;
 };

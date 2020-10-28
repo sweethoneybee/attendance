@@ -20,7 +20,6 @@ export default ({
       <TextInput
         style={{ ...styles.input, ...inputStyle }}
         onChangeText={(text) => {
-          console.log("여기서 텍스트:" + text);
           onChangeText(text);
           if (isValidText(text) === true) {
             setChangingFeedBack("좋아요!");
