@@ -29,15 +29,15 @@ export default ({ navigation, onClick }) => {
           navigation.navigate("Github");
         }}
       >
-        <Text style={styles.buttonText}>{"깃헙"}</Text>
+        <Text style={styles.buttonText}>{"깃허브"}</Text>
       </BasicButton>
       <BasicButton
         style={styles.button}
         onPress={() => {
-          console.log("임시 온프레스");
+          navigation.navigate("Explanation");
         }}
       >
-        <Text style={styles.buttonText}>{"개인정보"}</Text>
+        <Text style={styles.buttonText}>{"정보 가져오는 방법"}</Text>
       </BasicButton>
       <Text style={styles.buttonTitle}>나가기</Text>
       <BasicButton

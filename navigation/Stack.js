@@ -4,6 +4,7 @@ import AttendanceDetail from "../screen/AttendanceDetail";
 import AddClass from "../screen/AddClass";
 import WriteStudentId from "../screen/WriteStudentId";
 import Github from "../screen/Github";
+import Explanation from "../screen/Explanation";
 import Tabs from "../navigation/Tabs";
 const Stack = createStackNavigator();
 
@@ -43,7 +44,12 @@ export default () => {
       <Stack.Screen
         name="Github"
         component={Github}
-        options={{ title: "깃헙", headerTitleAlign: "center" }}
+        options={{ title: "깃허브", headerTitleAlign: "center" }}
+      />
+      <Stack.Screen
+        name="Explanation"
+        component={Explanation}
+        options={{ title: "정보 가져오는 방법", headerTitleAlign: "center" }}
       />
     </Stack.Navigator>
   );
