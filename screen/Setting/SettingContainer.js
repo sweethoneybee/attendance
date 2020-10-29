@@ -1,11 +1,16 @@
 import React from "react";
-
 import SettingPresenter from "./SettingPresenter";
+import AsyncStorage from "@react-native-community/async-storage";
+import RNRestart from "react-native-restart";
+
 export default ({ navigation, route }) => {
-  console.log("이름: " + route.name);
-  const onClick = () => {
-    console.log("수업목록 버튼 클릭");
+  const resetClick = () => {
+    // await AsyncStorage.removeItem("StudentId");
+    // await AsyncStorage.removeItem("ClassList");
+    console.log("리스타트 클릭");
+    console.log(typeof RNRestart);
+    RNRestart.Restart();
   };
 
-  return <SettingPresenter navigation={navigation} onClick={onClick} />;
+  return <SettingPresenter navigation={navigation} resetClick={resetClick} />;
 };

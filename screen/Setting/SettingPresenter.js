@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollView, Text, StyleSheet } from "react-native";
 import BasicButton from "../../component/BasicButton";
 
-export default ({ navigation, onClick }) => {
+export default ({ navigation, resetClick }) => {
   return (
     <ScrollView style={{ width: "100%", height: "100%" }}>
       <Text style={styles.buttonTitle}>수정</Text>
@@ -40,12 +40,7 @@ export default ({ navigation, onClick }) => {
         <Text style={styles.buttonText}>{"정보 가져오는 방법"}</Text>
       </BasicButton>
       <Text style={styles.buttonTitle}>나가기</Text>
-      <BasicButton
-        style={styles.button}
-        onPress={() => {
-          console.log("임시 온프레스");
-        }}
-      >
+      <BasicButton style={styles.button} onPress={resetClick}>
         <Text style={{ ...styles.buttonText, color: "red" }}>{"리셋"}</Text>
       </BasicButton>
     </ScrollView>
