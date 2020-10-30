@@ -9,10 +9,10 @@ export default ({ navigation, resetClick }) => {
       <BasicButton
         style={styles.button}
         onPress={() => {
-          console.log("임시 온프레스");
+          navigation.navigate("Semester");
         }}
       >
-        <Text style={styles.buttonText}>{"현재 학기"}</Text>
+        <Text style={styles.buttonText}>{"학기 일괄 수정"}</Text>
       </BasicButton>
       <BasicButton
         style={styles.button}

@@ -5,6 +5,7 @@ import AddClass from "../screen/AddClass";
 import WriteStudentId from "../screen/WriteStudentId";
 import Github from "../screen/Github";
 import Explanation from "../screen/Explanation";
+import Semester from "../screen/Semester";
 import Tabs from "../navigation/Tabs";
 const Stack = createStackNavigator();
 
@@ -35,6 +36,11 @@ export default () => {
         name="AddClass"
         component={AddClass}
         options={{ title: "수업추가", headerTitleAlign: "center" }}
+      />
+      <Stack.Screen
+        name="Semester"
+        component={Semester}
+        options={{ title: "학기 일괄 수정", headerTitleAlign: "center" }}
       />
       <Stack.Screen
         name="WriteStudentId"

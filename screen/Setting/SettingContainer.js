@@ -4,11 +4,11 @@ import AsyncStorage from "@react-native-community/async-storage";
 import RNRestart from "react-native-restart";
 
 export default ({ navigation, route }) => {
-  const resetClick = () => {
-    // await AsyncStorage.removeItem("StudentId");
-    // await AsyncStorage.removeItem("ClassList");
+  const resetClick = async () => {
+    await AsyncStorage.removeItem("StudentId");
+    await AsyncStorage.removeItem("ClassList");
     console.log("리스타트 클릭");
-    console.log(typeof RNRestart);
+    // console.log(typeof RNRestart);
     RNRestart.Restart();
   };
 
