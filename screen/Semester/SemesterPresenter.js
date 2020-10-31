@@ -13,8 +13,10 @@ export default ({ onChangeText, value, onPress }) => {
         onChangeText={onChangeText}
         value={value}
         maxLength={10}
-        feedBack={'"숫자 10자"로 적어주세요'}
-        isValidText={(text) => (text.match(/\d{10}/) !== null ? true : false)}
+        feedBack={"숫자 한 개만 적어주세요(1 or 2)"}
+        isValidText={(text) =>
+          text.match(/[12]/) !== null && text.length === 1 ? true : false
+        }
         inputStyle={styles.input}
         feedBackStyle={{ marginLeft: "5%" }}
         keyboardType={"number-pad"}

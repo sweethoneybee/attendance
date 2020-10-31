@@ -69,6 +69,7 @@ export default ({ navigation, route }) => {
     studentId: "",
   });
   const [attendanceDataOfClasses, setAttendanceDataOfClasses] = useState([]);
+  const [semester, setSemester] = useState("");
 
   const setRenderingData = async () => {
     let classList, studentId, attendanceDataOfClasses;
@@ -80,6 +81,9 @@ export default ({ navigation, route }) => {
       studentId = await AsyncStorage.getItem("StudentId");
       studentId =
         studentId !== null ? JSON.parse(studentId) : "입력된 학번 없음";
+
+      const storedSemester = await AsyncStorage.getItem("Semester");
+      setSemester(storedSemester);
     } catch (err) {
       console.error("ERR_ATTENDANCE_CHECK_ASYNC_STORAGE_GET_ITEM", err);
     }
@@ -96,7 +100,6 @@ export default ({ navigation, route }) => {
       });
       setAttendanceDataOfClasses(attendanceDataOfClasses);
     } else {
-      console.log("아무 강의도 등록되지 않았음");
       setClasses({
         loading: false,
         studentId,
@@ -116,6 +119,7 @@ export default ({ navigation, route }) => {
       {...classes}
       attendanceDataOfClasses={attendanceDataOfClasses}
       setAttendanceDataOfClasses={setAttendanceDataOfClasses}
+      semester={semester}
     />
   );
 };

@@ -42,6 +42,10 @@ export default function App() {
     await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
 
     // real logic
+    const semester = await getDataFromAsyncStorage("Semester");
+    if (semester === null) {
+      await AsyncStorage.setItem("Semester", "2");
+    }
     const id = await getDataFromAsyncStorage("StudentId");
     if (id !== null) {
       setStudentIdIsReady(true);

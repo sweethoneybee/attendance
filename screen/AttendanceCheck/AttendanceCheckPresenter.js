@@ -19,6 +19,7 @@ export default ({
   loading,
   attendanceDataOfClasses,
   setAttendanceDataOfClasses,
+  semester,
 }) => {
   // const [attendanceDataOfClasses, setattendanceDataOfClasses] = useState(
   //   // Array(5)
@@ -107,7 +108,9 @@ export default ({
             ["설정-나의 학번"에서 학번을 등록해주세요!]
           </Text>
         ) : (
-          <Text style={styles.studentId}>{studentId}</Text>
+          <Text style={styles.studentId}>
+            {studentId} - {semester}학기
+          </Text>
         )}
         {attendanceDataOfClasses.length === 0 ? (
           <Text style={styles.directive}>
