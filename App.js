@@ -37,7 +37,7 @@ export default function App() {
     //for Test
     let classList = {};
     // await AsyncStorage.setItem("StudentId", "2016047756");
-    await AsyncStorage.setItem("StudentId", "2016047883");
+    // await AsyncStorage.setItem("StudentId", "2016047883");
     // await AsyncStorage.removeItem("StudentId");
     await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
 

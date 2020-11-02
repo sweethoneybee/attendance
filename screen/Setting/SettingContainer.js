@@ -2,7 +2,7 @@ import React from "react";
 import SettingPresenter from "./SettingPresenter";
 import AsyncStorage from "@react-native-community/async-storage";
 import CreateTwoButtonAlert from "../../component/CreateTwoButtonAlert";
-// import RNRestart from "react-native-restart";
+import * as Updates from "expo-updates";
 
 export default ({ navigation, route }) => {
   const confirmOnPress = async () => {
@@ -11,7 +11,7 @@ export default ({ navigation, route }) => {
     // console.log("버튼 눌리기");
     // console.log("타입: " + typeof RNRestart);
     // console.log("그냥찍기: " + RNRestart);
-    // RNRestart.Restart();
+    Updates.reloadAsync();
   };
   const denyOnPress = () => {};
   const resetClick = () => {
