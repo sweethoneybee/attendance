@@ -11,6 +11,7 @@ import AddClassButton from "../../component/AddClassButton";
 import { SwipeListView } from "react-native-swipe-list-view";
 import AsyncStorage from "@react-native-community/async-storage";
 import ErrorHandler from "../../util/ErrorHandler";
+import CreateTwoButtonAlert from "../../component/CreateTwoButtonAlert";
 
 export default ({
   navigation,
@@ -92,7 +93,16 @@ export default ({
       <Text>😉</Text>
       <TouchableOpacity
         style={[styles.backRightBtn, styles.backRightBtnRight]}
-        onPress={() => deleteRow(rowMap, data.item.key)}
+        onPress={() => {
+          const confirmOnPress = () => deleteRow(rowMap, data.item.key);
+          CreateTwoButtonAlert({
+            title: "수업 삭제",
+            message: data.item.className + " 를 삭제하시겠습니까?",
+            confirmMessage: "좋아요",
+            confirmOnPress,
+            denyMessage: "싫어요",
+          });
+        }}
       >
         <Text style={styles.backTextWhite}>삭제</Text>
       </TouchableOpacity>
