@@ -12,7 +12,7 @@ export default ({ onChangeText, value, onPress }) => {
         title={""}
         onChangeText={onChangeText}
         value={value}
-        maxLength={10}
+        maxLength={1}
         feedBack={"숫자 한 개만 적어주세요(1 or 2)"}
         isValidText={(text) =>
           text.match(/[12]/) !== null && text.length === 1 ? true : false
