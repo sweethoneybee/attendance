@@ -10,6 +10,7 @@ import ScrollContainer from "../../component/ScrollContainer";
 import AddClassButton from "../../component/AddClassButton";
 import { SwipeListView } from "react-native-swipe-list-view";
 import AsyncStorage from "@react-native-community/async-storage";
+import ErrorHandler from "../../util/ErrorHandler";
 
 export default ({
   navigation,
@@ -21,13 +22,6 @@ export default ({
   setAttendanceDataOfClasses,
   semester,
 }) => {
-  // const [attendanceDataOfClasses, setattendanceDataOfClasses] = useState(
-  //   // Array(5)
-  //   //   .fill("")
-  //   //   .map((_, i) => ({ key: `${i}`, text: `item #${i}` }))
-  //   attendanceDataOfClasses
-  // );
-
   const closeRow = (rowMap, rowKey) => {
     if (rowMap[rowKey]) {
       rowMap[rowKey].closeRow();
@@ -44,10 +38,19 @@ export default ({
     });
     newData.splice(prevIndex, 1);
 
-    let classList = await AsyncStorage.getItem("ClassList");
-    classList = classList !== null ? JSON.parse(classList) : {};
-    delete classList[classId];
-    await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
+    let classList;
+    try {
+      classList = await AsyncStorage.getItem("ClassList");
+      classList = classList !== null ? JSON.parse(classList) : {};
+      delete classList[classId];
+      await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
+    } catch (error) {
+      ErrorHandler({
+        errorMessage: "삭제 실패",
+        messageTail: "다시 시도해보세요",
+        confirmOnPress: () => {},
+      });
+    }
 
     setAttendanceDataOfClasses(newData);
   };
@@ -60,7 +63,6 @@ export default ({
         navigation.navigate("AttendanceDetail", { classInfo: data.item });
       }}
       style={styles.rowFront}
-      // underlayColor={"#AAA"}
       underlayColor={"#dfe4ea"}
     >
       <View style={{ paddingVertical: "1.5%" }}>
