@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import BasicButton from "../../component/BasicButton";
 import Input from "../../component/AddClassInput";
 
