@@ -3,12 +3,17 @@ import SettingPresenter from "./SettingPresenter";
 import AsyncStorage from "@react-native-community/async-storage";
 import CreateTwoButtonAlert from "../../component/CreateTwoButtonAlert";
 import Restart from "../../util/Restart";
+import ErrorHandler from "../../util/ErrorHandler";
 
 export default ({ navigation, route }) => {
   const confirmOnPress = async () => {
-    await AsyncStorage.removeItem("StudentId");
-    await AsyncStorage.removeItem("ClassList");
-    Restart();
+    try {
+      await AsyncStorage.removeItem("StudentId");
+      await AsyncStorage.removeItem("ClassList");
+      Restart();
+    } catch (error) {
+      ErrorHandler({ errorMessage: "초기화 실패" });
+    }
   };
   const denyOnPress = () => {};
   const resetClick = () => {

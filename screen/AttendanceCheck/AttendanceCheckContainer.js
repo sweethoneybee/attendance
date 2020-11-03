@@ -3,8 +3,9 @@ import AsyncStorage from "@react-native-community/async-storage";
 import * as FileSystem from "expo-file-system";
 import XLSX from "xlsx";
 import getEnvVars from "../../environment";
-
 import AttendanceCheckPresenter from "./AttendanceCheckPresenter";
+import ErrorHandler from "../../util/ErrorHandler";
+import Restart from "../../util/Restart";
 
 const { getApiUrl } = getEnvVars();
 
@@ -15,16 +16,25 @@ const makeAttendanceData = async (
 ) => {
   for (let classId in classList) {
     const className = classList[classId];
-    console.log("수업이름: " + className);
-    console.log("강의 아이디: " + classId);
-    await FileSystem.downloadAsync(
-      encodeURI(getApiUrl(studentId, classId)),
-      FileSystem.documentDirectory + classId
-    );
+    try {
+      await FileSystem.downloadAsync(
+        encodeURI(getApiUrl(studentId, classId)),
+        FileSystem.documentDirectory + classId
+      );
+    } catch (error) {
+      error.reason = "블랙보드에 연결할 수 없음";
+      throw error;
+    }
 
-    const xlsFile = await FileSystem.readAsStringAsync(
-      FileSystem.documentDirectory + classId
-    );
+    let xlsFile;
+    try {
+      xlsFile = await FileSystem.readAsStringAsync(
+        FileSystem.documentDirectory + classId
+      );
+    } catch (error) {
+      error.reason = "출석정보 파싱 실패";
+      throw error;
+    }
 
     let absentCount = 0;
     const lectures = [];
@@ -41,7 +51,6 @@ const makeAttendanceData = async (
           contentTime: oneLectureObj["컨텐츠시간"],
           passedTime: oneLectureObj["학습한시간"],
         };
-        console.log("등록한 lecture name: " + lecture.name);
         if (oneLectureObj["온라인출석상태(P/F)"] === "F") {
           lecture.check = false;
           absentCount += 1;
@@ -84,12 +93,26 @@ export default ({ navigation, route }) => {
 
       const storedSemester = await AsyncStorage.getItem("Semester");
       setSemester(storedSemester);
-    } catch (err) {
-      console.error("ERR_ATTENDANCE_CHECK_ASYNC_STORAGE_GET_ITEM", err);
+    } catch (error) {
+      ErrorHandler({ errorMessage: "출석정보 가져오던 중 에러 발생" });
     }
 
     if (classList !== null && studentId !== null) {
-      await makeAttendanceData(classList, studentId, attendanceDataOfClasses);
+      try {
+        await makeAttendanceData(classList, studentId, attendanceDataOfClasses);
+      } catch (error) {
+        if (!error.reason) {
+          ErrorHandler({
+            errorMessage: "출석확인 페이지 알 수 없는 에러 발생",
+          });
+        } else {
+          ErrorHandler({
+            errorMessage: error.reason,
+            messageTail: "\n페이지를 아래로 당겨서 새로고침 해보세요",
+            confirmOnPress: () => {},
+          });
+        }
+      }
       attendanceDataOfClasses.map((value, i) => {
         value.key = i;
       });

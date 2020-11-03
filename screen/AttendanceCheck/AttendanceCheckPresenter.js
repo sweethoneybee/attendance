@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -52,14 +52,11 @@ export default ({
     setAttendanceDataOfClasses(newData);
   };
 
-  const onRowDidOpen = (rowKey) => {
-    console.log("This row opened", rowKey);
-  };
+  const onRowDidOpen = (rowKey) => {};
 
   const renderItem = (data) => (
     <TouchableHighlight
       onPress={() => {
-        console.log("You touched me");
         navigation.navigate("AttendanceDetail", { classInfo: data.item });
       }}
       style={styles.rowFront}
@@ -149,22 +146,17 @@ const styles = StyleSheet.create({
   },
   rowFront: {
     alignItems: "flex-start",
-    // backgroundColor: "#CCA",
     backgroundColor: "white",
     borderBottomColor: "black",
-
     justifyContent: "center",
-    // height: "10%",
   },
   rowBack: {
     alignItems: "center",
-    // backgroundColor: "#DDD",
     backgroundColor: "white",
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     paddingLeft: 15,
-    // height: "100%",
   },
   backRightBtn: {
     alignItems: "center",
@@ -173,12 +165,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     width: 75,
-    // height: "100%",
   },
   backRightBtnLeft: {
     backgroundColor: "blue",
     right: 75,
-    // height: "100%",
   },
   backRightBtnRight: {
     backgroundColor: "red",
@@ -199,7 +189,6 @@ const styles = StyleSheet.create({
   lectureTitle: {
     fontFamily: Platform.OS === "ios" ? "Maple_otf" : "Maple_ttf",
     paddingLeft: "5%",
-    // marginBottom: "2%",
     paddingVertical: "2%",
     fontSize: 19,
   },
