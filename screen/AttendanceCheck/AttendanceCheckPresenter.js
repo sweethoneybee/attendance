@@ -96,8 +96,8 @@ export default ({
         onPress={() => {
           const confirmOnPress = () => deleteRow(rowMap, data.item.key);
           CreateTwoButtonAlert({
-            title: "수업 삭제",
-            message: data.item.className + " 를 삭제하시겠습니까?",
+            title: "수업을 삭제합니다\n",
+            message: `[${data.item.className}]`,
             confirmMessage: "좋아요",
             confirmOnPress,
             denyMessage: "싫어요",
