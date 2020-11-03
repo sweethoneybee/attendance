@@ -5,15 +5,10 @@ import XLSX from "xlsx";
 import getEnvVars from "../../environment";
 import AttendanceCheckPresenter from "./AttendanceCheckPresenter";
 import ErrorHandler from "../../util/ErrorHandler";
-import Restart from "../../util/Restart";
 
 const { getApiUrl } = getEnvVars();
 
-const makeAttendanceData = async (
-  classList,
-  studentId,
-  attendanceDataOfClasses
-) => {
+const makeAttendanceData = async (classList, studentId) => {
   for (let classId in classList) {
     const className = classList[classId];
     try {
@@ -44,12 +39,14 @@ const makeAttendanceData = async (
       lectureXls.push(XLSX.utils.sheet_to_json(xls.Sheets[sheetName]));
     });
 
+    let i = 0;
     lectureXls.forEach((xlsPage) => {
       xlsPage.forEach((oneLectureObj) => {
         let lecture = {
           name: oneLectureObj["컨텐츠명"],
           contentTime: oneLectureObj["컨텐츠시간"],
           passedTime: oneLectureObj["학습한시간"],
+          key: i,
         };
         if (oneLectureObj["온라인출석상태(P/F)"] === "F") {
           lecture.check = false;
@@ -58,17 +55,18 @@ const makeAttendanceData = async (
           lecture.check = true;
         }
         lectures.push(lecture);
+        i += 1;
       });
     });
 
     let pass = absentCount === 0 ? true : false;
-    attendanceDataOfClasses.push({
+    return {
       className,
       classId,
       lectures,
       absentCount,
       pass,
-    });
+    };
   }
 };
 
@@ -99,7 +97,9 @@ export default ({ navigation, route }) => {
 
     if (classList !== null && studentId !== null) {
       try {
-        await makeAttendanceData(classList, studentId, attendanceDataOfClasses);
+        attendanceDataOfClasses.push(
+          await makeAttendanceData(classList, studentId)
+        );
       } catch (error) {
         if (!error.reason) {
           ErrorHandler({
