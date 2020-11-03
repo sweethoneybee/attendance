@@ -8,7 +8,12 @@ import ErrorHandler from "../../util/ErrorHandler";
 
 const { getApiUrl } = getEnvVars();
 
-const makeAttendanceData = async (classList, studentId) => {
+const makeAttendanceData = async (
+  classList,
+  studentId,
+  attendanceDataOfClasses
+) => {
+  let keyCount = 0;
   for (let classId in classList) {
     const className = classList[classId];
     try {
@@ -39,14 +44,12 @@ const makeAttendanceData = async (classList, studentId) => {
       lectureXls.push(XLSX.utils.sheet_to_json(xls.Sheets[sheetName]));
     });
 
-    let i = 0;
     lectureXls.forEach((xlsPage) => {
       xlsPage.forEach((oneLectureObj) => {
         let lecture = {
           name: oneLectureObj["컨텐츠명"],
           contentTime: oneLectureObj["컨텐츠시간"],
           passedTime: oneLectureObj["학습한시간"],
-          key: i,
         };
         if (oneLectureObj["온라인출석상태(P/F)"] === "F") {
           lecture.check = false;
@@ -55,18 +58,19 @@ const makeAttendanceData = async (classList, studentId) => {
           lecture.check = true;
         }
         lectures.push(lecture);
-        i += 1;
       });
     });
 
     let pass = absentCount === 0 ? true : false;
-    return {
+    attendanceDataOfClasses.push({
       className,
       classId,
       lectures,
       absentCount,
       pass,
-    };
+      key: keyCount,
+    });
+    keyCount += 1;
   }
 };
 
@@ -97,9 +101,7 @@ export default ({ navigation, route }) => {
 
     if (classList !== null && studentId !== null) {
       try {
-        attendanceDataOfClasses.push(
-          await makeAttendanceData(classList, studentId)
-        );
+        await makeAttendanceData(classList, studentId, attendanceDataOfClasses);
       } catch (error) {
         if (!error.reason) {
           ErrorHandler({
@@ -113,9 +115,7 @@ export default ({ navigation, route }) => {
           });
         }
       }
-      attendanceDataOfClasses.map((value, i) => {
-        value.key = i;
-      });
+
       setClasses({
         loading: false,
         attendanceDataOfClasses,
