@@ -3,13 +3,22 @@ import { Alert } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 import WriteStudentIdPresenter from "./WriteStudentIdPresenter";
 import CreateTwoButtonAlert from "../../component/CreateTwoButtonAlert";
+import ErrorHandler from "../../util/ErrorHandler";
 
 export default ({ navigation, route }) => {
   const [studentId, setStudentId] = useState("10글자");
 
   const confirmOnPress = async () => {
-    await AsyncStorage.setItem("StudentId", studentId);
-    await AsyncStorage.setItem("ClassList", JSON.stringify({}));
+    try {
+      await AsyncStorage.setItem("StudentId", studentId);
+      await AsyncStorage.setItem("ClassList", JSON.stringify({}));
+    } catch (error) {
+      ErrorHandler({
+        errorMessage: "학번을 수정 중 에러가 발생했습니다",
+        messageTail: "",
+        confirmOnPress: () => {},
+      });
+    }
     setStudentId("10글자");
     navigation.navigate("Tabs");
   };
