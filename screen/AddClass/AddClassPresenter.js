@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import Input from "../../component/AddClassInput";
-import ScreenContainer from "../../component/ScreenContainer";
 import BasicButton from "../../component/BasicButton";
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
+
 export default ({ onPress, titles, onChangeText, value }) => {
   return (
     <View style={styles.mainContainer}>

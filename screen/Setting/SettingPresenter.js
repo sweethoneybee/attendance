@@ -1,10 +1,11 @@
 import React from "react";
-import { ScrollView, Text, StyleSheet } from "react-native";
+import { ScrollView, View, Text, StyleSheet, Dimensions } from "react-native";
 import BasicButton from "../../component/BasicButton";
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 export default ({ navigation, resetClick }) => {
   return (
-    <ScrollView style={{ width: "100%", height: "100%" }}>
+    <View style={styles.main}>
       <Text style={styles.buttonTitle}>수정</Text>
       <BasicButton
         style={styles.button}
@@ -43,17 +44,21 @@ export default ({ navigation, resetClick }) => {
       <BasicButton style={styles.button} onPress={resetClick}>
         <Text style={{ ...styles.buttonText, color: "red" }}>{"리셋"}</Text>
       </BasicButton>
-    </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  main: { width: "100%", height: "100%" },
+  main: {
+    width: WIDTH,
+    height: HEIGHT,
+  },
   button: {
     alignItems: "flex-start",
     padding: 0,
     backgroundColor: "white",
-    height: "15%",
+    height: "5.5%",
+    // height: "12%",
     marginTop: "0.4%",
     paddingLeft: "5%",
   },
@@ -61,7 +66,6 @@ const styles = StyleSheet.create({
     color: "grey",
     marginTop: "5%",
     marginBottom: "1%",
-    // marginLeft: "2%",
     paddingLeft: "5%",
     fontSize: 13,
   },
