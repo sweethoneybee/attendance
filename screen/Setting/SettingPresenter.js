@@ -12,7 +12,7 @@ export default ({ navigation, resetClick }) => {
           navigation.navigate("Semester");
         }}
       >
-        <Text style={styles.buttonText}>{"학기 일괄 수정"}</Text>
+        <Text style={styles.buttonText}>{"학기"}</Text>
       </BasicButton>
       <BasicButton
         style={styles.button}
@@ -20,7 +20,7 @@ export default ({ navigation, resetClick }) => {
           navigation.navigate("WriteStudentId");
         }}
       >
-        <Text style={styles.buttonText}>{"나의 학번"}</Text>
+        <Text style={styles.buttonText}>{"학번"}</Text>
       </BasicButton>
       <Text style={styles.buttonTitle}>개발자</Text>
       <BasicButton
