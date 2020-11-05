@@ -17,6 +17,7 @@ export default ({ onPress, titles, onChangeText, value }) => {
           isValidText={(text) =>
             text.match(/[A-Z]{3}\d{4}/) !== null ? true : false
           }
+          inputStyle={styles.input}
           /*
            **  regex
            **  [A-Z]{3}\d{4}
@@ -69,13 +70,13 @@ const styles = StyleSheet.create({
     height: HEIGHT,
     width: WIDTH,
     backgroundColor: "white",
-    paddingHorizontal: "15%",
-    paddingVertical: "5%",
+    padding: "15%",
   },
   inputContainer: {
-    height: "15%",
+    height: "20%",
     width: "100%",
-    // backgroundColor: "yellow",
+    backgroundColor: "yellow",
+    marginTop: "5%",
   },
   button: {
     marginLeft: "30%",
@@ -88,5 +89,8 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 18,
     borderBottomWidth: 2,
+  },
+  input: {
+    height: "150%",
   },
 });

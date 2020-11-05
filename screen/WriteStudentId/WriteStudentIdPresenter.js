@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import BasicButton from "../../component/BasicButton";
 import Input from "../../component/AddClassInput";
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 export default ({ onChangeText, value, onPress }) => {
   return (
@@ -35,8 +36,8 @@ export default ({ onChangeText, value, onPress }) => {
 
 const styles = StyleSheet.create({
   main: {
-    height: "100%",
-    width: "100%",
+    height: HEIGHT,
+    width: WIDTH,
   },
   title: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
@@ -45,7 +46,6 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    // backgroundColor: "#3498db",
     borderRadius: 10,
     width: "25%",
     height: "5%",
@@ -57,15 +57,13 @@ const styles = StyleSheet.create({
   buttonText: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 20,
-    borderBottomWidth: 27,
+    borderBottomWidth: 2,
   },
   input: {
     borderBottomColor: "black",
     borderBottomWidth: 0.7,
     width: "80%",
-    height: 40,
-    // marginTop: "5%",
-    // marginBottom: "2%",
+    height: "30%",
     marginLeft: "5%",
     fontSize: 20,
   },

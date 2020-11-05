@@ -51,10 +51,10 @@ export default ({
 
 const styles = StyleSheet.create({
   mainContainer: {
-    // width: "100%",
-    height: "23%",
+    width: "100%",
+    height: "17%",
     // marginBottom: "5%",
-    // backgroundColor: "blue"
+    // backgroundColor: "blue",
   },
   inputTitle: {
     fontSize: 20,
@@ -62,14 +62,14 @@ const styles = StyleSheet.create({
     paddingLeft: "4%",
   },
   input: {
-    height: "120%",
+    height: "100%",
     borderBottomWidth: 1.2,
     paddingLeft: 10,
     borderRadius: 10,
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 20,
     marginTop: "2%",
-    // backgroundColor: "red"
+    // backgroundColor: "red",
   },
   feedBack: {
     fontSize: 10,
