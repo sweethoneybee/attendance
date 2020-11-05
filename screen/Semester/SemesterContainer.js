@@ -3,13 +3,22 @@ import { Alert } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 import SemesterPresenter from "./SemesterPresenter";
 import CreateTwoButtonAlert from "../../component/CreateTwoButtonAlert";
+import ErrorHandler from "../../util/ErrorHandler";
 
 export default ({ navigation, route }) => {
   const [semester, setSemester] = useState("숫자 한 개(1 or 2)");
 
   const confirmOnPress = async () => {
-    await AsyncStorage.setItem("Semester", semester);
-    await AsyncStorage.setItem("ClassList", JSON.stringify({}));
+    try {
+      await AsyncStorage.setItem("Semester", semester);
+      await AsyncStorage.setItem("ClassList", JSON.stringify({}));
+    } catch (error) {
+      ErrorHandler({
+        errorMessage: "학기를 수정 중 에러가 발생했습니다",
+        messageTail: "",
+        confirmOnPress: () => {},
+      });
+    }
     setSemester("숫자 한 개(1 or 2)");
     navigation.navigate("Tabs");
   };
