@@ -37,7 +37,7 @@ export default ({ navigation, resetClick }) => {
           navigation.navigate("Explanation");
         }}
       >
-        <Text style={styles.buttonText}>{"정보 가져오는 방법"}</Text>
+        <Text style={styles.buttonText}>{"사용법 및 FAQ"}</Text>
       </BasicButton>
       <Text style={styles.buttonTitle}>나가기</Text>
       <BasicButton style={styles.button} onPress={resetClick}>
