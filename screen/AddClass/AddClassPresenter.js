@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import Input from "../../component/AddClassInput";
 import ScreenContainer from "../../component/ScreenContainer";
 import BasicButton from "../../component/BasicButton";
-
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 export default ({ onPress, titles, onChangeText, value }) => {
   return (
     <View style={styles.mainContainer}>
@@ -66,25 +66,27 @@ export default ({ onPress, titles, onChangeText, value }) => {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    height: "100%",
-    width: "100%",
+    height: HEIGHT,
+    width: WIDTH,
     backgroundColor: "white",
-    padding: "8%",
+    paddingHorizontal: "15%",
+    paddingVertical: "5%",
   },
   inputContainer: {
-    height: "16%",
+    height: "15%",
     width: "100%",
     // backgroundColor: "yellow",
   },
   button: {
     marginLeft: "30%",
     padding: 10,
-    width: "40%",
+    width: "42%",
+    height: "100%",
     borderRadius: 10,
   },
   buttonText: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 18,
-    borderBottomWidth: 6,
+    borderBottomWidth: 2,
   },
 });

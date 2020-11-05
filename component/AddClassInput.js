@@ -28,7 +28,7 @@ export default ({
             setChangingFeedBack(feedBack);
             setChangeFontColor(false);
           }
-          console.log(text);
+          // console.log(text);
         }}
         placeholder={value}
         autoCorrect={false}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "red"
   },
   feedBack: {
-    fontSize: 12,
+    fontSize: 10,
     paddingTop: "1%",
     paddingLeft: "3%",
     color: "red",
