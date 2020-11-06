@@ -33,6 +33,7 @@ export default ({ onPress, titles, onChangeText, value }) => {
           feedBack={'"숫자 5자"로 적어주세요'}
           isValidText={(text) => (text.match(/\d{5}/) !== null ? true : false)}
           keyboardType={"number-pad"}
+          inputStyle={styles.input}
           /*
            **  regex
            **  \d{5}
@@ -49,6 +50,7 @@ export default ({ onPress, titles, onChangeText, value }) => {
           isValidText={(text) =>
             text !== value[2] && text !== "" ? true : false
           }
+          inputStyle={styles.input}
         />
       </View>
       <BasicButton onPress={onPress} style={styles.button}>
@@ -70,12 +72,12 @@ const styles = StyleSheet.create({
     height: HEIGHT,
     width: WIDTH,
     backgroundColor: "white",
-    padding: "15%",
+    padding: "10%",
   },
   inputContainer: {
-    height: "20%",
+    height: "10%",
     width: "100%",
-    backgroundColor: "yellow",
+    // backgroundColor: "yellow",
     marginTop: "5%",
   },
   button: {

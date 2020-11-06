@@ -52,7 +52,7 @@ export default ({
 const styles = StyleSheet.create({
   mainContainer: {
     width: "100%",
-    height: "17%",
+    height: "30%",
     // marginBottom: "5%",
     // backgroundColor: "blue",
   },

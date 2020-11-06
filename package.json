@@ -20,6 +20,7 @@
     "expo-file-system": "~9.0.1",
     "expo-font": "~8.2.1",
     "expo-status-bar": "^1.0.2",
+    "expo-updates": "~0.2.8",
     "expo-web-browser": "~8.3.1",
     "js-file-download": "^0.4.12",
     "react": "~16.11.0",
@@ -31,8 +32,7 @@
     "react-native-screens": "~2.9.0",
     "react-native-swipe-list-view": "^3.2.4",
     "react-native-web": "~0.11.7",
-    "xlsx": "^0.16.7",
-    "expo-updates": "~0.2.8"
+    "xlsx": "^0.16.7"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
