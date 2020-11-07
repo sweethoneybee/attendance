@@ -1,5 +1,6 @@
 import React from "react";
-import { ScrollView, View, Text, StyleSheet } from "react-native";
+import { ScrollView, View, Text, StyleSheet, Dimensions } from "react-native";
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 export default ({}) => (
   <ScrollView style={styles.mainCotainer}>
@@ -70,8 +71,8 @@ export default ({}) => (
 const styles = StyleSheet.create({
   mainCotainer: {
     backgroundColor: "white",
-    height: "100%",
-    width: "100%",
+    height: HEIGHT,
+    width: WIDTH,
   },
   textContainer: {
     backgroundColor: "red",
