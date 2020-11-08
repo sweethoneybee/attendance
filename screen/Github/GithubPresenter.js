@@ -1,10 +1,12 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, Dimensions } from "react-native";
 import ScreenCotainer from "../../component/ScreenContainer";
 import * as WebBrower from "expo-web-browser";
 
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
+
 export default ({ githubLink }) => (
-  <ScreenCotainer title={"구경오세요 😉"}>
+  <ScreenCotainer style={styles.mainContainer} title={"구경오세요 😉"}>
     <Text style={styles.content}>꿀벌의달콤한여행</Text>
     <Text
       onPress={() => {
@@ -19,6 +21,10 @@ export default ({ githubLink }) => (
 );
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    width: WIDTH,
+    height: HEIGHT,
+  },
   content: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 22,

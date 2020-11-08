@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default ({ title, children }) => (
-  <View style={styles.mainContainer}>
+export default ({ style = styles.mainContainer, title, children }) => (
+  <View style={style}>
     <Text style={styles.titleContainer}>{title}</Text>
     <View style={styles.childrenContainer}>{children}</View>
   </View>
