@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import BasicButton from "../../component/BasicButton";
 import Input from "../../component/AddClassInput";
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 export default ({ onChangeText, value, onPress }) => {
   return (
@@ -35,8 +36,8 @@ export default ({ onChangeText, value, onPress }) => {
 
 const styles = StyleSheet.create({
   main: {
-    height: "100%",
-    width: "100%",
+    height: HEIGHT,
+    width: WIDTH,
   },
   title: {
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
