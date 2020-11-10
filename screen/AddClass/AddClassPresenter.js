@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     padding: "10%",
   },
   inputContainer: {
-    height: "10%",
+    height: "12%",
     width: "100%",
     // backgroundColor: "yellow",
     marginTop: "5%",

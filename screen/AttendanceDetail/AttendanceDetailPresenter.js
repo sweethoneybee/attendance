@@ -1,5 +1,7 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { StyleSheet, View, Text, ScrollView, Dimensions } from "react-native";
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
+
 export default ({ className, classId, lectures, absentCount, pass }) => {
   const presentLecture = (lecture) => {
     return (
@@ -89,8 +91,8 @@ export default ({ className, classId, lectures, absentCount, pass }) => {
 
 const styles = StyleSheet.create({
   main: {
-    width: "100%",
-    height: "100%",
+    width: WIDTH,
+    height: HEIGHT,
   },
   titleContainer: {
     margin: "4%",
