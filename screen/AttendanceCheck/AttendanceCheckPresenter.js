@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   View,
+  Dimensions,
 } from "react-native";
 import ScrollContainer from "../../component/ScrollContainer";
 import AddClassButton from "../../component/AddClassButton";
@@ -12,6 +13,8 @@ import { SwipeListView } from "react-native-swipe-list-view";
 import AsyncStorage from "@react-native-community/async-storage";
 import ErrorHandler from "../../util/ErrorHandler";
 import CreateTwoButtonAlert from "../../component/CreateTwoButtonAlert";
+
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 export default ({
   navigation,
@@ -110,7 +113,7 @@ export default ({
   );
 
   return (
-    <View style={styles.container}>
+    <View style={styles.mainContainer}>
       <ScrollContainer refreshFn={refreshFn} loading={loading}>
         {studentId === "" ? (
           <Text style={styles.studentId}>
@@ -149,9 +152,11 @@ export default ({
 };
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     backgroundColor: "white",
     flex: 1,
+    width: WIDTH,
+    height: HEIGHT,
   },
   backTextWhite: {
     color: "#FFF",
