@@ -12,6 +12,8 @@ export default ({ buttonText, onPress }) => (
 
 const styles = StyleSheet.create({
   mainContainer: {
+    width: "100%",
+    height: "100%",
     position: "absolute",
     top: "85%",
     left: "80%",
@@ -19,9 +21,10 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     backgroundColor: "#3498db",
-    padding: 4.5,
-    width: 50,
-    height: 50,
+    // padding: 4.5,
+    // padding: "2%",
+    width: "13%",
+    height: "30%",
     borderRadius: 12,
     shadowColor: "black",
     shadowOffset: { width: 5, height: 5 },
