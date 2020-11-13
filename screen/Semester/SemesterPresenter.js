@@ -7,7 +7,6 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 export default ({ onChangeText, value, onPress }) => {
   return (
     <View style={styles.main}>
-      <View style={{ height: "25%" }} />
       <Text style={styles.title}>현재 학기</Text>
       <Input
         title={""}
@@ -45,6 +44,7 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 38,
     marginLeft: "8%",
+    marginTop: "20%",
   },
   button: {
     alignItems: "center",
@@ -65,8 +65,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.7,
     width: "80%",
     height: "30%",
-    // marginTop: "5%",
-    // marginBottom: "2%",
     marginLeft: "5%",
     fontSize: 20,
   },
