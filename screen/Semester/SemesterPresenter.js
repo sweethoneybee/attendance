@@ -7,20 +7,22 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 export default ({ onChangeText, value, onPress }) => {
   return (
     <View style={styles.main}>
-      <Text style={styles.title}>현재 학기</Text>
-      <Input
-        title={""}
-        onChangeText={onChangeText}
-        value={value}
-        maxLength={1}
-        feedBack={"숫자 한 개만 적어주세요(1 or 2)"}
-        isValidText={(text) =>
-          text.match(/[12]/) !== null && text.length === 1 ? true : false
-        }
-        inputStyle={styles.input}
-        feedBackStyle={{ marginLeft: "5%" }}
-        keyboardType={"number-pad"}
-      />
+      <View style={styles.inputContainer}>
+        <Text style={styles.title}>현재 학기</Text>
+        <Input
+          title={""}
+          onChangeText={onChangeText}
+          value={value}
+          maxLength={1}
+          feedBack={"숫자 한 개만 적어주세요(1 or 2)"}
+          isValidText={(text) =>
+            text.match(/[12]/) !== null && text.length === 1 ? true : false
+          }
+          inputStyle={styles.input}
+          feedBackStyle={{ marginLeft: "5%" }}
+          keyboardType={"number-pad"}
+        />
+      </View>
       <BasicButton style={styles.button} onPress={onPress}>
         <View
           style={{
@@ -60,11 +62,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     borderBottomWidth: 2,
   },
+  inputContainer: {
+    width: "100%",
+    height: "30%",
+  },
   input: {
     borderBottomColor: "black",
     borderBottomWidth: 0.7,
     width: "80%",
-    height: "30%",
+    height: "40%",
     marginLeft: "5%",
     fontSize: 20,
   },

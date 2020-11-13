@@ -52,9 +52,8 @@ export default ({
 const styles = StyleSheet.create({
   mainContainer: {
     width: "100%",
-    height: "15%",
+    height: "40%",
     // marginBottom: "5%",
-    // backgroundColor: "blue",
   },
   inputTitle: {
     fontSize: 20,

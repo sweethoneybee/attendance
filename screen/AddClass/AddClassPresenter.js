@@ -75,10 +75,10 @@ const styles = StyleSheet.create({
     padding: "10%",
   },
   inputContainer: {
-    height: "12%",
+    height: "10%",
     width: "100%",
     // backgroundColor: "yellow",
-    marginTop: "5%",
+    marginBottom: "12%",
   },
   button: {
     marginLeft: "30%",
