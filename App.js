@@ -32,15 +32,16 @@ export default function App() {
     GodoM_otf: require("./assets/GodoM.otf"),
   });
 
-  const _loadAssetsAsync = async () => {
-    const fontAssets = cacheFonrts([FontAwesome.font]);
-    //for Test
-    let classList = {};
+  const testSetting = async () => {
     // await AsyncStorage.setItem("StudentId", "2016047756");
-    // await AsyncStorage.setItem("StudentId", "2016047883");
+    await AsyncStorage.setItem("StudentId", "2016047883");
     await AsyncStorage.removeItem("StudentId");
+    let classList = {};
     await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
-
+  };
+  const _loadAssetsAsync = async () => {
+    testSetting();
+    const fontAssets = cacheFonrts([FontAwesome.font]);
     // real logic
     const semester = await getDataFromAsyncStorage("Semester");
     if (semester === null) {
