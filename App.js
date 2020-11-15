@@ -8,7 +8,7 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import AsyncStorage from "@react-native-community/async-storage";
 import FirstStart from "./screen/FirstStart";
-
+import Loading from "./screen/Loading";
 import Stack from "./navigation/Stack";
 
 const cacheFonrts = (fonts) => {
@@ -77,7 +77,9 @@ export default function App() {
         onError={(error) => {
           console.error("Error during loading", error);
         }}
-      />
+      >
+        <Loading />
+      </AppLoading>
     );
   }
 }
