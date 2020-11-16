@@ -3,8 +3,9 @@ import { View, Text, StyleSheet, Dimensions } from "react-native";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
-export default () => (
+export default ({ children }) => (
   <View style={styles.mainContainer}>
+    {children}
     <View style={styles.contentContainer}>
       <Text style={styles.content}>쉿, 로딩중 🤫</Text>
     </View>

@@ -8,7 +8,7 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import AsyncStorage from "@react-native-community/async-storage";
 import FirstStart from "./screen/FirstStart";
-import Loading from "./screen/Loading";
+import * as SplashScreen from "expo-splash-screen";
 import Stack from "./navigation/Stack";
 
 const cacheFonrts = (fonts) => {
@@ -40,6 +40,13 @@ export default function App() {
     await AsyncStorage.setItem("ClassList", JSON.stringify(classList));
   };
   const _loadAssetsAsync = async () => {
+    await SplashScreen.preventAutoHideAsync();
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        console.log("야호");
+        resolve();
+      }, 3000);
+    });
     testSetting();
     const fontAssets = cacheFonrts([FontAwesome.font]);
     // real logic
@@ -52,6 +59,7 @@ export default function App() {
       setStudentIdIsReady(true);
     }
     await Promise.all([...fontAssets]);
+    await SplashScreen.hideAsync();
   };
 
   if (assetIsReady && fontsLoaded) {
@@ -77,9 +85,7 @@ export default function App() {
         onError={(error) => {
           console.error("Error during loading", error);
         }}
-      >
-        <Loading />
-      </AppLoading>
+      />
     );
   }
 }
