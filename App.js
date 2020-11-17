@@ -41,12 +41,6 @@ export default function App() {
   };
   const _loadAssetsAsync = async () => {
     await SplashScreen.preventAutoHideAsync();
-    await new Promise((resolve) => {
-      setTimeout(() => {
-        console.log("야호");
-        resolve();
-      }, 3000);
-    });
     testSetting();
     const fontAssets = cacheFonrts([FontAwesome.font]);
     // real logic
