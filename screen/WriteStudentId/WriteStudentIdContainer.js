@@ -47,7 +47,7 @@ export default ({ navigation, route }) => {
   return (
     <WriteStudentIdPresenter
       onChangeText={setStudentId}
-      value={studentId}
+      value={"10글자"}
       onPress={onPress}
     />
   );

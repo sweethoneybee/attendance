@@ -47,7 +47,7 @@ export default ({ navigation, route }) => {
   return (
     <SemesterPresenter
       onChangeText={setSemester}
-      value={semester}
+      value={"숫자 한 개(1 or 2)"}
       onPress={onPress}
     />
   );

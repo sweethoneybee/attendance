@@ -11,6 +11,7 @@ export default ({
   feedBackStyle,
   isValidText,
   keyboardType,
+  autoFocus = false,
 }) => {
   const [changingFeedBack, setChangingFeedBack] = useState(feedBack);
   const [changeFontColor, setChangeFontColor] = useState(false);
@@ -28,13 +29,13 @@ export default ({
             setChangingFeedBack(feedBack);
             setChangeFontColor(false);
           }
-          // console.log(text);
         }}
         placeholder={value}
         autoCorrect={false}
         maxLength={maxLength}
         autoCapitalize={"characters"}
         keyboardType={keyboardType}
+        autoFocus={autoFocus}
       />
       <Text
         style={

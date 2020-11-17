@@ -19,6 +19,7 @@ export default ({ onChangeText, value, onPress }) => {
           inputStyle={styles.input}
           feedBackStyle={{ marginLeft: "5%" }}
           keyboardType={"number-pad"}
+          autoFocus={true}
         />
       </View>
       <BasicButton style={styles.button} onPress={onPress}>

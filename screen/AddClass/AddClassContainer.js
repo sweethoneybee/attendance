@@ -49,7 +49,7 @@ export default ({ navigation, route }) => {
   console.log("수업이름: " + className);
 
   const titles = ["학수번호", "수업번호", "수업이름"];
-  const stateValue = [haksuNumber, classNumber, className];
+  const stateValue = ["ex) ITE2037", "ex) 11821", "ex) 객체지향"];
   const setFunc = [setHaksuNumber, setClassNumber, setClassName];
   return (
     <AddClassPresenter

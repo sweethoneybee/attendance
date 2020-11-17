@@ -35,7 +35,7 @@ export default ({ setStudentIdIsReady }) => {
   return (
     <FirtsStartPresenter
       onChangeText={setStudentId}
-      value={studentId}
+      value={"10글자"}
       onPress={onPress}
     />
   );
