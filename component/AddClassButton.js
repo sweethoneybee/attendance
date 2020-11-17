@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
-    padding: "10%",
+    padding: Platform.OS === "ios" ? "10%" : "0%",
+    bottom: Platform.OS === "ios" ? "0%" : "10%",
   },
 });

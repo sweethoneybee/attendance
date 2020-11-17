@@ -37,8 +37,10 @@ export default ({
     closeRow(rowMap, rowKey);
     const newData = [...attendanceDataOfClasses];
     const prevIndex = attendanceDataOfClasses.findIndex((item) => {
-      item.key === rowKey;
-      classId = item.classId;
+      if (item.key === rowKey) {
+        classId = item.classId;
+        return true;
+      }
     });
     newData.splice(prevIndex, 1);
 

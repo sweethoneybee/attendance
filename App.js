@@ -41,7 +41,7 @@ export default function App() {
   };
   const _loadAssetsAsync = async () => {
     await SplashScreen.preventAutoHideAsync();
-    testSetting();
+    // testSetting();
     const fontAssets = cacheFonrts([FontAwesome.font]);
     // real logic
     const semester = await getDataFromAsyncStorage("Semester");
