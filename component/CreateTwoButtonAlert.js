@@ -8,7 +8,6 @@ export default ({
   denyMessage = "취소",
   denyOnPress = () => {},
 }) => {
-  console.log("알람버튼");
   Alert.alert(
     title,
     message,

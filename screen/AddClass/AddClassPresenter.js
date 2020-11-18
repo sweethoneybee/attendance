@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     height: "10%",
     width: "100%",
-    // backgroundColor: "yellow",
     marginBottom: "12%",
   },
   button: {

@@ -3,14 +3,6 @@ import { StyleSheet, View, Text, ScrollView, Dimensions } from "react-native";
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 export default ({ className, classId, lectures, absentCount, pass }) => {
-  const presentLecture = (lecture) => {
-    return (
-      <Text>
-        {lecture["컨텐츠명"]} {lecture["온라인출석상태"]}
-      </Text>
-    );
-  };
-
   return (
     <View stlye={styles.main}>
       <ScrollView style={{}}>
@@ -78,16 +70,6 @@ export default ({ className, classId, lectures, absentCount, pass }) => {
     </View>
   );
 };
-
-{
-  // <View>
-  //     <Text>
-  //       여기는 상세 출석페이지 입니다. 수업 이름은 {className} 입니다. 총
-  //       강의수는 {lectures.length}이며, 아직 듣지 않은 강의 수는 {absentCount}
-  //       입니다.
-  //     </Text>
-  //   </View>
-}
 
 const styles = StyleSheet.create({
   main: {

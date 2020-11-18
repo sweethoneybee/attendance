@@ -14,7 +14,3 @@ export default ({ className, lectures, absentCount, pass }) => (
     </Text>
   </View>
 );
-
-//         textAlign: "center",
-//         fontFamily: "Maple_ttf",
-//         fontSize: 24,

@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === "ios" ? "GodoM_otf" : "GodoM_ttf",
     fontSize: 20,
     marginTop: "2%",
-    // backgroundColor: "red",
   },
   feedBack: {
     fontSize: 10,

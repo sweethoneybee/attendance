@@ -22,9 +22,7 @@ export default ({ navigation, route }) => {
     setStudentId("10글자");
     navigation.navigate("Tabs");
   };
-  const denyOnPress = () => {
-    // do nothing
-  };
+  const denyOnPress = () => {};
   const onPress = () => {
     if (studentId.match(/\d{10}/) === null) {
       Alert.alert("잘못된 학번", "학번 양식에 맞게 적어주세요", [

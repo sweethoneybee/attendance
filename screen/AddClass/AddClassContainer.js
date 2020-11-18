@@ -33,7 +33,6 @@ export default ({ navigation, route }) => {
     }
     let { classId, className } = makeClassDto();
 
-    console.log("classId: " + classId + ", className: " + className);
     let classList = await AsyncStorage.getItem("ClassList");
     classList = classList !== null ? JSON.parse(classList) : {};
     classList[classId] = className;
@@ -44,10 +43,6 @@ export default ({ navigation, route }) => {
     route.params.refreshFn();
     navigation.navigate("Tabs");
   };
-  console.log("학수번호: " + haksuNumber);
-  console.log("수업번호: " + classNumber);
-  console.log("수업이름: " + className);
-
   const titles = ["학수번호", "수업번호", "수업이름"];
   const stateValue = ["ex) ITE2037", "ex) 11821", "ex) 객체지향"];
   const setFunc = [setHaksuNumber, setClassNumber, setClassName];

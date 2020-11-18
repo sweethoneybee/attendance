@@ -9,7 +9,6 @@ export default ({
     Restart();
   },
 }) => {
-  console.log("에러핸들러");
   OneButtonAlert({
     title,
     message: errorMessage + messageTail,

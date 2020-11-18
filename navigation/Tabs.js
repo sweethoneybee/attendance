@@ -2,8 +2,6 @@ import React, { useLayoutEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
 import AttendanceCheck from "../screen/AttendanceCheck";
-import WriteStudentId from "../screen/WriteStudentId";
-import AddClass from "../screen/AddClass";
 import Setting from "../screen/Setting";
 
 const Tabs = createBottomTabNavigator();
@@ -22,7 +20,6 @@ export default ({ navigation, route }) => {
     <Tabs.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused }) => {
-          // let iconName = Platform.OS === "ios" ? "ios-" : "md-";
           let iconName = "";
           if (route.name === "출석확인") {
             iconName += "table";
@@ -46,7 +43,6 @@ export default ({ navigation, route }) => {
         showLabel: true,
         style: {
           backgroundColor: "white",
-          // borderTopColor: "white",
           selectedTextColor: "white",
         },
       }}

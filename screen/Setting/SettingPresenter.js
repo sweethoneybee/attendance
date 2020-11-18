@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import BasicButton from "../../component/BasicButton";
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     padding: 0,
     backgroundColor: "white",
     height: "5.5%",
-    // height: "15%",
     marginTop: "0.4%",
     paddingLeft: "5%",
   },
