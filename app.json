@@ -1,26 +1,27 @@
 {
   "expo": {
-    "name": "attendance",
-    "slug": "attendance",
+    "name": "ChulseokHanyang",
+    "slug": "github.com/sweethoneybee/attendance",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#3498db"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "com.sweethoneybee.ChulseokHanyang",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "android": {
+      "package": "com.sweethoneybee.ChulseokHanyang",
+      "versionCode": 1
     }
   }
 }
