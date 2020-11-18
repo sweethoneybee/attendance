@@ -61,6 +61,16 @@ export default ({}) => (
       </Text>
     </View>
     <View stlye={styles.textContainer}>
+      <Text style={styles.title}>#앱다운로드해주셔서 감사합니다</Text>
+      <Text style={styles.content}>
+        {"> "}앱스토어, 플레이스토어에 좋은 평 남겨주시는 게 저에겐 많은 도움이
+        됩니다. 😊.
+      </Text>
+      <Text style={styles.content}>
+        {"> "}버그, 기타 의견, 소감 뭐든지 리뷰 남겨주시면 감사하겠습니다. 😉.
+      </Text>
+    </View>
+    <View stlye={styles.textContainer}>
       <Text style={styles.title}>#추가 문의</Text>
       <Text style={styles.content}>{"> "}이메일: jsjphone8@gmail.com</Text>
       <Text style={styles.content}>{"> "}카카오톡ID: jsjphone</Text>
