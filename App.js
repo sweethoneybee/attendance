@@ -33,7 +33,7 @@ export default function App() {
   });
 
   const testSetting = async () => {
-    // await AsyncStorage.setItem("StudentId", "2016047756");
+    // developer's student id
     await AsyncStorage.setItem("StudentId", "2016047883");
     await AsyncStorage.removeItem("StudentId");
     let classList = {};
@@ -43,7 +43,7 @@ export default function App() {
     await SplashScreen.preventAutoHideAsync();
     // testSetting();
     const fontAssets = cacheFonrts([FontAwesome.font]);
-    // real logic
+
     const semester = await getDataFromAsyncStorage("Semester");
     if (semester === null) {
       await AsyncStorage.setItem("Semester", "2");
