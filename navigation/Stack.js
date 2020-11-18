@@ -40,12 +40,12 @@ export default () => {
       <Stack.Screen
         name="Semester"
         component={Semester}
-        options={{ title: "학기 일괄 수정", headerTitleAlign: "center" }}
+        options={{ title: "학기 수정", headerTitleAlign: "center" }}
       />
       <Stack.Screen
         name="WriteStudentId"
         component={WriteStudentId}
-        options={{ title: "학번수정", headerTitleAlign: "center" }}
+        options={{ title: "학번 수정", headerTitleAlign: "center" }}
       />
       <Stack.Screen
         name="Github"
@@ -55,7 +55,7 @@ export default () => {
       <Stack.Screen
         name="Explanation"
         component={Explanation}
-        options={{ title: "정보 가져오는 방법", headerTitleAlign: "center" }}
+        options={{ title: "사용법 및 FAQ", headerTitleAlign: "center" }}
       />
     </Stack.Navigator>
   );

@@ -16,3 +16,4 @@ web-build/
 # environment.js
 package-lock.json
 test.json
+.expo-shared/
