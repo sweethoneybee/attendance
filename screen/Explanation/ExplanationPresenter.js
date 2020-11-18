@@ -67,7 +67,7 @@ export default ({}) => (
         됩니다. 😊.
       </Text>
       <Text style={styles.content}>
-        {"> "}버그, 기타 의견, 소감 뭐든지 리뷰 남겨주시면 감사하겠습니다. 😉.
+        {"> "}의견, 버그발견, 뭐든지 리뷰 남겨주시면 감사하겠습니다. 😉.
       </Text>
     </View>
     <View stlye={styles.textContainer}>
