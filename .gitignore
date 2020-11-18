@@ -13,6 +13,6 @@ web-build/
 .DS_Store
 
 # private settings
-environment.js
+# environment.js
 package-lock.json
 test.json
