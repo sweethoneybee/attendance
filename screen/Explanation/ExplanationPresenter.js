@@ -63,11 +63,10 @@ export default ({}) => (
     <View stlye={styles.textContainer}>
       <Text style={styles.title}>#앱다운로드해주셔서 감사합니다</Text>
       <Text style={styles.content}>
-        {"> "}앱스토어, 플레이스토어에 리뷰를 남겨주시는 게 저에겐 많은 도움이
-        됩니다. 😊.
+        {"> "}리뷰, 관심은 저에게 많은 도움이 됩니다. 😊.
       </Text>
       <Text style={styles.content}>
-        {"> "}의견, 버그발견, 뭐든지 리뷰 남겨주시면 감사하겠습니다. 😉.
+        {"> "}의견, 버그발견, 뭐든지 의견 주시면 감사하겠습니다. 😉.
       </Text>
     </View>
     <View stlye={styles.textContainer}>
