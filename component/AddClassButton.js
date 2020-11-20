@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     backgroundColor: "#3498db",
-    width: "13%",
-    height: "30%",
+    width: 50,
+    height: 50,
     borderRadius: 12,
     shadowColor: "black",
     shadowOffset: { width: 5, height: 5 },
