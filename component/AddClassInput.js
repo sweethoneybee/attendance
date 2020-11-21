@@ -13,7 +13,7 @@ export default ({
   keyboardType,
   autoFocus = false,
 }) => {
-  const [changingFeedBack, setChangingFeedBack] = useState(feedBack);
+  const [changingFeedBack, setChangingFeedBack] = useState("");
   const [changeFontColor, setChangeFontColor] = useState(false);
   return (
     <View style={styles.mainContainer}>
