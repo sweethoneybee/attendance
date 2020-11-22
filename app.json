@@ -24,7 +24,7 @@
       "versionCode": 2,
       "permissions": []
     },
-    "description": "한양대학교 서울캠퍼스 블랙보드용 출석확인 앱입니다.",
+    "description": "한양대학교 출석확인 앱입니다.",
     "githubUrl": "https://github.com/sweethoneybee/attendance"
   }
 }

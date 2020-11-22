@@ -13,13 +13,13 @@ export default ({
     message,
     [
       {
-        text: confirmMessage,
-        onPress: confirmOnPress,
-      },
-      {
         text: denyMessage,
         onPress: denyOnPress,
         style: "destructive",
+      },
+      {
+        text: confirmMessage,
+        onPress: confirmOnPress,
       },
     ],
     { cancelable: false }
