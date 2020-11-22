@@ -6,7 +6,7 @@ import * as WebBrower from "expo-web-browser";
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 export default ({ githubLink }) => (
-  <ScreenCotainer style={styles.mainContainer} title={"구경오세요 😉"}>
+  <ScreenCotainer style={styles.mainContainer} title={"개발 소스코드 확인"}>
     <Text style={styles.content}>꿀벌의달콤한여행</Text>
     <Text
       onPress={() => {
@@ -14,9 +14,9 @@ export default ({ githubLink }) => (
       }}
       style={styles.link}
     >
-      https://github.com/sweethoneybee
+      https://github.com/sweethoneybee/attendance
     </Text>
-    <Text style={{ ...styles.link, fontSize: 12 }}>(클릭해서 들어가기!)</Text>
+    <Text style={{ ...styles.link, fontSize: 12 }}>(클릭해서 들어가기)</Text>
   </ScreenCotainer>
 );
 

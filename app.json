@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.sweethoneybee.ChulseokHanyang",
-      "buildNumber": "1.0.3",
+      "buildNumber": "1.0.4",
       "supportsTablet": true
     },
     "android": {
@@ -24,7 +24,7 @@
       "versionCode": 2,
       "permissions": []
     },
-    "description": "한양대학교 출석확인 앱입니다.",
+    "description": "출석확인 앱",
     "githubUrl": "https://github.com/sweethoneybee/attendance"
   }
 }
