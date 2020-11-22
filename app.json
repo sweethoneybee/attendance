@@ -2,7 +2,7 @@
   "expo": {
     "name": "ChulseokHanyang",
     "slug": "chulseokhanyang",
-    "version": "1.0.0",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -16,12 +16,13 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.sweethoneybee.ChulseokHanyang",
-      "buildNumber": "1.0.2",
+      "buildNumber": "1.0.3",
       "supportsTablet": true
     },
     "android": {
       "package": "com.sweethoneybee.ChulseokHanyang",
-      "versionCode": 1
+      "versionCode": 2,
+      "permissions": []
     },
     "description": "한양대학교 서울캠퍼스 블랙보드용 출석확인 앱입니다.",
     "githubUrl": "https://github.com/sweethoneybee/attendance"
