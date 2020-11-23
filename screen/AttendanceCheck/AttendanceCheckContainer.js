@@ -11,6 +11,7 @@ const { getApiUrl } = getEnvVars();
 const makeAttendanceData = async (
   classList,
   studentId,
+  storedSemester,
   attendanceDataOfClasses
 ) => {
   let keyCount = 0;
@@ -18,7 +19,7 @@ const makeAttendanceData = async (
     const className = classList[classId];
     try {
       await FileSystem.downloadAsync(
-        encodeURI(getApiUrl(studentId, classId)),
+        encodeURI(getApiUrl(studentId, classId, storedSemester)),
         FileSystem.documentDirectory + classId
       );
     } catch (error) {
@@ -83,7 +84,7 @@ export default ({ navigation, route }) => {
   const [semester, setSemester] = useState("");
 
   const setRenderingData = async () => {
-    let classList, studentId, attendanceDataOfClasses;
+    let classList, studentId, storedSemester, attendanceDataOfClasses;
     attendanceDataOfClasses = Array();
     try {
       classList = await AsyncStorage.getItem("ClassList");
@@ -93,7 +94,7 @@ export default ({ navigation, route }) => {
       studentId =
         studentId !== null ? JSON.parse(studentId) : "입력된 학번 없음";
 
-      const storedSemester = await AsyncStorage.getItem("Semester");
+      storedSemester = await AsyncStorage.getItem("Semester");
       setSemester(storedSemester);
     } catch (error) {
       ErrorHandler({ errorMessage: "출석정보 가져오던 중 에러 발생" });
@@ -101,7 +102,12 @@ export default ({ navigation, route }) => {
 
     if (classList !== null && studentId !== null) {
       try {
-        await makeAttendanceData(classList, studentId, attendanceDataOfClasses);
+        await makeAttendanceData(
+          classList,
+          studentId,
+          storedSemester,
+          attendanceDataOfClasses
+        );
       } catch (error) {
         if (!error.reason) {
           ErrorHandler({
@@ -134,6 +140,8 @@ export default ({ navigation, route }) => {
   useEffect(() => {
     setRenderingData();
   }, []);
+
+  useEffect(() => {}, []);
   return (
     <AttendanceCheckPresenter
       navigation={navigation}

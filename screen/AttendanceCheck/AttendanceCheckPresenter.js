@@ -131,16 +131,21 @@ export default ({
             [오른쪽 아래 버튼을 눌러 수업을 등록해주세요!]
           </Text>
         ) : (
-          <SwipeListView
-            data={attendanceDataOfClasses}
-            renderItem={renderItem}
-            renderHiddenItem={renderHiddenItem}
-            rightOpenValue={-75}
-            previewRowKey={"0"}
-            previewOpenValue={-40}
-            previewOpenDelay={3000}
-            onRowDidOpen={onRowDidOpen}
-          />
+          <View>
+            <Text style={{ ...styles.directive, fontSize: 12 }}>
+              (아래로 당겨서 새로고침)
+            </Text>
+            <SwipeListView
+              data={attendanceDataOfClasses}
+              renderItem={renderItem}
+              renderHiddenItem={renderHiddenItem}
+              rightOpenValue={-75}
+              previewRowKey={"0"}
+              previewOpenValue={-40}
+              previewOpenDelay={3000}
+              onRowDidOpen={onRowDidOpen}
+            />
+          </View>
         )}
       </ScrollContainer>
       <AddClassButton

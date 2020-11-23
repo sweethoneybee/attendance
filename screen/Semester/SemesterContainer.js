@@ -11,6 +11,7 @@ export default ({ navigation, route }) => {
   const confirmOnPress = async () => {
     try {
       await AsyncStorage.setItem("Semester", semester);
+      await AsyncStorage.setItem("ClassList", JSON.stringify({}));
     } catch (error) {
       ErrorHandler({
         errorMessage: "학기를 수정 중 에러가 발생했습니다",
@@ -36,7 +37,7 @@ export default ({ navigation, route }) => {
     CreateTwoButtonAlert({
       title: semester + "학기",
       message:
-        "위의 학기로 적용하시겠습니까?\n(변경 후 새로고침하면 적용됩니다)",
+        "위의 학기로 적용하시겠습니까?\n(수정 시 수업목록이 초기화됩니다)",
       confirmMessage: "좋아요",
       denyMessage: "싫어요",
       confirmOnPress,

@@ -10,6 +10,7 @@ export default ({ navigation, route }) => {
     try {
       await AsyncStorage.removeItem("StudentId");
       await AsyncStorage.removeItem("ClassList");
+      await AsyncStorage.setItem("Semester", "2");
       Restart();
     } catch (error) {
       ErrorHandler({ errorMessage: "초기화 실패" });

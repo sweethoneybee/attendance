@@ -2,8 +2,8 @@ import Constants from "expo-constants";
 
 const ENV = {
   prod: {
-    getApiUrl: (studentId, classId) => {
-      return `https://learn.hanyang.ac.kr/webapps/bbgs-OnlineAttendance-BB5a998b8c44671/excel?selectedUserId=${studentId}&crs_batch_uid=202010HY${classId}&title=2016047883&column=사용자명,위치,컨텐츠명,학습한시간,학습인정시간,컨텐츠시간,온라인출석진도율,온라인출석상태(P/F)`;
+    getApiUrl: (studentId, classId, storedSemester) => {
+      return `https://learn.hanyang.ac.kr/webapps/bbgs-OnlineAttendance-BB5a998b8c44671/excel?selectedUserId=${studentId}&crs_batch_uid=2020${storedSemester}0HY${classId}&title=2016047883&column=사용자명,위치,컨텐츠명,학습한시간,학습인정시간,컨텐츠시간,온라인출석진도율,온라인출석상태(P/F)`;
     },
   },
   // dev: {
