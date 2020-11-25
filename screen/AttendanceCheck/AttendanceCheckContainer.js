@@ -71,7 +71,21 @@ const parsingLectureNameToDate = (contentName) => {
   return { startDate, endDate };
 };
 
-const checkLectureDate = (contentName, currentDate) => {};
+const checkLectureIsAvailable = (contentName, currentDate) => {
+  const { startDate, endDate } = parsingLectureNameToDate(contentName);
+  let index = 0;
+
+  // 인덱스 증가시켜나가면서 배열끼리 비교. 3가지 경우가 있음
+  // 인덱스가 4인 경우, 수강가능기간에 포함. return 1.
+  // 인덱스가 4보다 작은 경우, 날짜 초과 or 아직 안됨
+  // 이 경우, 해당 인덱스에서 start, end를 비교해서 알아봐야함.
+  // 아직 수강 가능 날짜가 안되었으면 return 2.
+  // 이미 날짜 초과되었으면 return 3.
+
+  return 1;
+  return 2;
+  return 3;
+};
 const makeAttendanceData = async (
   classList,
   studentId,
@@ -101,7 +115,7 @@ const makeAttendanceData = async (
       throw error;
     }
 
-    let absentCount = 0;
+    let [absentCount, canTakeCount, soonCount, timeoverCount] = [0, 0, 0, 0];
     const lectures = [];
     const lectureXls = [];
     const xls = XLSX.read(xlsFile, { type: "string" });
@@ -117,12 +131,21 @@ const makeAttendanceData = async (
           contentTime: oneLectureObj["컨텐츠시간"],
           passedTime: oneLectureObj["학습한시간"],
         };
+
+        let isAvailable = 0; // 이미 수강완료
         if (oneLectureObj["온라인출석상태(P/F)"] === "F") {
           lecture.check = false;
           absentCount += 1;
+
+          let isAvailable = checkLectureIsAvailable(lecture.name, currentDate); // 1: 수강가능, 2: 예정, 3: 기간만료
+          if (isAvailable === 1) canTakeCount += 1;
+          else if (isAvailable === 2) soonCount += 1;
+          else if (isAvailable === 3) timeoverCount += 1;
         } else {
           lecture.check = true;
         }
+
+        lecture.isAvailable = isAvailable;
         lectures.push(lecture);
       });
     });
