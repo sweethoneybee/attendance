@@ -8,6 +8,70 @@ import ErrorHandler from "../../util/ErrorHandler";
 
 const { getApiUrl } = getEnvVars();
 
+const getCurrentDate = () => {
+  let month, date, hours, min;
+  month = new Date().getMonth();
+  date = new Date().getDate();
+  hours = new Date().getHours();
+  min = new Date().getMinutes();
+
+  let currentDate = [month, date, hours, min];
+  return currentDate;
+};
+
+const parsingLectureNameToDate = (contentName) => {
+  let parsedDate, key, startDate, endDate;
+  key = contentName;
+  while (key.match(/\/(.*)/)) {
+    key = key.match(/\/(.*)/)[1];
+  }
+  parsedDate = key.substring(1);
+
+  let s_month, s_date, s_hour, s_min, s_index;
+  s_index = 5;
+  s_month = Number(
+    (parsedDate[s_index] !== 0 ? parsedDate[s_index] : "") +
+      parsedDate[s_index + 1]
+  );
+  s_date = Number(
+    (parsedDate[s_index + 3] !== 0 ? parsedDate[s_index + 3] : "") +
+      parsedDate[s_index + 4]
+  );
+  s_hour = Number(
+    (parsedDate[s_index + 6] !== 0 ? parsedDate[s_index + 6] : "") +
+      parsedDate[s_index + 7]
+  );
+  s_min = Number(
+    (parsedDate[s_index + 9] !== 0 ? parsedDate[s_index + 9] : "") +
+      parsedDate[s_index + 10]
+  );
+
+  let e_month, e_date, e_hour, e_min;
+  s_index += 19;
+  e_month = Number(
+    (parsedDate[s_index] !== 0 ? parsedDate[s_index] : "") +
+      parsedDate[s_index + 1]
+  );
+  e_date = Number(
+    (parsedDate[s_index + 3] !== 0 ? parsedDate[s_index + 3] : "") +
+      parsedDate[s_index + 4]
+  );
+  e_hour = Number(
+    (parsedDate[s_index + 6] !== 0 ? parsedDate[s_index + 6] : "") +
+      parsedDate[s_index + 7]
+  );
+  e_min = Number(
+    (parsedDate[s_index + 9] !== 0 ? parsedDate[s_index + 9] : "") +
+      parsedDate[s_index + 10]
+  );
+
+  startDate = [s_month, s_date, s_hour, s_min];
+  endDate = [e_month, e_date, e_hour, e_min];
+
+  return { startDate, endDate };
+};
+
+const checkLectureDate = (contentName, currentDate) => {};
 const makeAttendanceData = async (
   classList,
   studentId,
@@ -45,6 +109,7 @@ const makeAttendanceData = async (
       lectureXls.push(XLSX.utils.sheet_to_json(xls.Sheets[sheetName]));
     });
 
+    let currentDate = getCurrentDate();
     lectureXls.forEach((xlsPage) => {
       xlsPage.forEach((oneLectureObj) => {
         let lecture = {
