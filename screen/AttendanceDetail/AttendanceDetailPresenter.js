@@ -71,9 +71,9 @@ export default ({
                 }
               >
                 <Text style={styles.info}>
-                  {lecture.name.length > 50
-                    ? lecture.name.slice(0, 50) + "\n" + lecture.name.slice(50)
-                    : lecture.name}
+                  {lecture.name.substr(0, lecture.name.indexOf("2020") - 3) +
+                    "\n" +
+                    lecture.name.substr(lecture.name.indexOf("2020"))}
                 </Text>
                 <Text style={styles.info}>
                   {lecture.passedTime !== undefined
