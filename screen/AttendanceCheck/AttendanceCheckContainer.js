@@ -9,13 +9,14 @@ import ErrorHandler from "../../util/ErrorHandler";
 const { getApiUrl } = getEnvVars();
 
 const getCurrentDate = () => {
-  let month, date, hours, min;
-  month = new Date().getMonth();
+  let month, date, hour, min;
+  month = new Date().getMonth() + 1;
   date = new Date().getDate();
-  hours = new Date().getHours();
+  hour = new Date().getHours();
   min = new Date().getMinutes();
 
-  let currentDate = [month, date, hours, min];
+  // let currentDate = [month, date, hours, min];
+  let currentDate = month * 1000000 + date * 10000 + hour * 100 + min;
   return currentDate;
 };
 
@@ -65,15 +66,16 @@ const parsingLectureNameToDate = (contentName) => {
       parsedDate[s_index + 10]
   );
 
-  startDate = [s_month, s_date, s_hour, s_min];
-  endDate = [e_month, e_date, e_hour, e_min];
+  // startDate = [s_month, s_date, s_hour, s_min]; // 09 09 09 09 // 9090909
+  // endDate = [e_month, e_date, e_hour, e_min];
+  startDate = s_month * 1000000 + s_date * 10000 + s_hour * 100 + s_min;
+  endDate = e_month * 1000000 + e_date * 10000 + e_hour * 100 + e_min;
 
   return { startDate, endDate };
 };
 
 const checkLectureIsAvailable = (contentName, currentDate) => {
   const { startDate, endDate } = parsingLectureNameToDate(contentName);
-  let index = 0;
 
   // 인덱스 증가시켜나가면서 배열끼리 비교. 3가지 경우가 있음
   // 인덱스가 4인 경우, 수강가능기간에 포함. return 1.
@@ -81,10 +83,9 @@ const checkLectureIsAvailable = (contentName, currentDate) => {
   // 이 경우, 해당 인덱스에서 start, end를 비교해서 알아봐야함.
   // 아직 수강 가능 날짜가 안되었으면 return 2.
   // 이미 날짜 초과되었으면 return 3.
-
-  return 1;
-  return 2;
-  return 3;
+  if (currentDate >= startDate && currentDate <= endDate) return 1;
+  else if (currentDate < startDate) return 2;
+  else return 3;
 };
 const makeAttendanceData = async (
   classList,
@@ -137,7 +138,7 @@ const makeAttendanceData = async (
           lecture.check = false;
           absentCount += 1;
 
-          let isAvailable = checkLectureIsAvailable(lecture.name, currentDate); // 1: 수강가능, 2: 예정, 3: 기간만료
+          isAvailable = checkLectureIsAvailable(lecture.name, currentDate); // 1: 수강가능, 2: 예정, 3: 기간만료
           if (isAvailable === 1) canTakeCount += 1;
           else if (isAvailable === 2) soonCount += 1;
           else if (isAvailable === 3) timeoverCount += 1;
@@ -156,6 +157,9 @@ const makeAttendanceData = async (
       classId,
       lectures,
       absentCount,
+      canTakeCount,
+      soonCount,
+      timeoverCount,
       pass,
       key: keyCount,
     });
@@ -198,6 +202,7 @@ export default ({ navigation, route }) => {
         );
       } catch (error) {
         if (!error.reason) {
+          console.log("에러: " + error);
           ErrorHandler({
             errorMessage: "출석확인 페이지 알 수 없는 에러 발생",
           });

@@ -77,7 +77,8 @@ export default ({
           <Text
             style={{
               ...styles.lectureData,
-              color: "blue",
+              // color: "blue",
+              color: "#B53471",
               paddingLeft: "6%",
             }}
           >
@@ -87,7 +88,7 @@ export default ({
           <Text
             style={{
               ...styles.lectureData,
-              color: "red",
+              color: "#6ab04c",
             }}
           >
             {data.item.lectures.length - data.item.absentCount}
@@ -98,11 +99,17 @@ export default ({
           <Text style={{ ...styles.lectureData, paddingLeft: "6%" }}>
             {"수강가능: "}
           </Text>
-          <Text style={{ ...styles.lectureData, color: "green" }}>{"3개"}</Text>
+          <Text style={{ ...styles.lectureData, color: "#1e90ff" }}>
+            {data.item.canTakeCount + "개"}
+          </Text>
           <Text style={{ ...styles.lectureData }}>{", 예정: "}</Text>
-          <Text style={{ ...styles.lectureData, color: "blue" }}>{"3개"}</Text>
+          <Text style={{ ...styles.lectureData, color: "#57606f" }}>
+            {data.item.soonCount + "개"}
+          </Text>
           <Text style={{ ...styles.lectureData }}>{", 기간만료: "}</Text>
-          <Text style={{ ...styles.lectureData, color: "red" }}>{"2개"}</Text>
+          <Text style={{ ...styles.lectureData, color: "red" }}>
+            {data.item.timeoverCount + "개"}
+          </Text>
         </View>
       </View>
     </TouchableHighlight>
