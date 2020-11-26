@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "ChulseokHanyang",
+    "name": "출석하냥",
     "slug": "chulseokhanyang",
-    "version": "1.0.5",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -16,12 +16,12 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.sweethoneybee.ChulseokHanyang",
-      "buildNumber": "1.0.5",
+      "buildNumber": "2.0.0",
       "supportsTablet": true
     },
     "android": {
       "package": "com.sweethoneybee.ChulseokHanyang",
-      "versionCode": 3,
+      "versionCode": 4,
       "permissions": []
     },
     "description": "출석확인 앱",
