@@ -10,13 +10,12 @@ const { getApiUrl } = getEnvVars();
 
 const getCurrentDate = () => {
   let month, date, hour, min;
-  month = new Date().getMonth() + 1;
-  date = new Date().getDate();
-  hour = new Date().getHours();
-  min = new Date().getMinutes();
+  month = String(new Date().getMonth() + 1);
+  date = String(new Date().getDate());
+  hour = String(new Date().getHours());
+  min = String(new Date().getMinutes());
 
-  // let currentDate = [month, date, hours, min];
-  let currentDate = month * 1000000 + date * 10000 + hour * 100 + min;
+  let currentDate = Number(month + date + hour + min);
   return currentDate;
 };
 
@@ -30,46 +29,36 @@ const parsingLectureNameToDate = (contentName) => {
 
   let s_month, s_date, s_hour, s_min, s_index;
   s_index = 5;
-  s_month = Number(
+  s_month =
     (parsedDate[s_index] !== 0 ? parsedDate[s_index] : "") +
-      parsedDate[s_index + 1]
-  );
-  s_date = Number(
+    parsedDate[s_index + 1];
+  s_date =
     (parsedDate[s_index + 3] !== 0 ? parsedDate[s_index + 3] : "") +
-      parsedDate[s_index + 4]
-  );
-  s_hour = Number(
+    parsedDate[s_index + 4];
+  s_hour =
     (parsedDate[s_index + 6] !== 0 ? parsedDate[s_index + 6] : "") +
-      parsedDate[s_index + 7]
-  );
-  s_min = Number(
+    parsedDate[s_index + 7];
+  s_min =
     (parsedDate[s_index + 9] !== 0 ? parsedDate[s_index + 9] : "") +
-      parsedDate[s_index + 10]
-  );
+    parsedDate[s_index + 10];
 
   let e_month, e_date, e_hour, e_min;
   s_index += 19;
-  e_month = Number(
+  e_month =
     (parsedDate[s_index] !== 0 ? parsedDate[s_index] : "") +
-      parsedDate[s_index + 1]
-  );
-  e_date = Number(
+    parsedDate[s_index + 1];
+  e_date =
     (parsedDate[s_index + 3] !== 0 ? parsedDate[s_index + 3] : "") +
-      parsedDate[s_index + 4]
-  );
-  e_hour = Number(
+    parsedDate[s_index + 4];
+  e_hour =
     (parsedDate[s_index + 6] !== 0 ? parsedDate[s_index + 6] : "") +
-      parsedDate[s_index + 7]
-  );
-  e_min = Number(
+    parsedDate[s_index + 7];
+  e_min =
     (parsedDate[s_index + 9] !== 0 ? parsedDate[s_index + 9] : "") +
-      parsedDate[s_index + 10]
-  );
+    parsedDate[s_index + 10];
 
-  // startDate = [s_month, s_date, s_hour, s_min]; // 09 09 09 09 // 9090909
-  // endDate = [e_month, e_date, e_hour, e_min];
-  startDate = s_month * 1000000 + s_date * 10000 + s_hour * 100 + s_min;
-  endDate = e_month * 1000000 + e_date * 10000 + e_hour * 100 + e_min;
+  startDate = Number(s_month + s_date + s_hour + s_min);
+  endDate = Number(e_month + e_date + e_hour + e_min);
 
   return { startDate, endDate };
 };
@@ -77,12 +66,6 @@ const parsingLectureNameToDate = (contentName) => {
 const checkLectureIsAvailable = (contentName, currentDate) => {
   const { startDate, endDate } = parsingLectureNameToDate(contentName);
 
-  // 인덱스 증가시켜나가면서 배열끼리 비교. 3가지 경우가 있음
-  // 인덱스가 4인 경우, 수강가능기간에 포함. return 1.
-  // 인덱스가 4보다 작은 경우, 날짜 초과 or 아직 안됨
-  // 이 경우, 해당 인덱스에서 start, end를 비교해서 알아봐야함.
-  // 아직 수강 가능 날짜가 안되었으면 return 2.
-  // 이미 날짜 초과되었으면 return 3.
   if (currentDate >= startDate && currentDate <= endDate) return 1;
   else if (currentDate < startDate) return 2;
   else return 3;
