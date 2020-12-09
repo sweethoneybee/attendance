@@ -18,7 +18,7 @@
 
 # 출석하냥 다운로드 링크
 
-android: [플레이스토어 연결](https://play.google.com/store/apps/details?id=com.sweethoneybee.ChulseokHanyang)  
+Android: [플레이스토어 연결](https://play.google.com/store/apps/details?id=com.sweethoneybee.ChulseokHanyang)  
 iOS: [앱스토어 연결](https://apps.apple.com/us/app/%EC%B6%9C%EC%84%9D%ED%95%98%EB%83%A5/id1540962786#?platform=iphone)
 
 # 앱 구동 원리
