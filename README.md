@@ -4,7 +4,11 @@
 `React Native`를 사용하여 크로스플랫폼 개발.  
 개발기간 9월 16일 ~ 11월 18일.
 
-개발, 설계, 디자인, 기획: 정성훈
+<img width="220" alt="스플래시" src="https://user-images.githubusercontent.com/25628769/121646470-53a0fd80-cad0-11eb-87d5-cd8143f73b6d.png"> <img width="220" alt="출석확인" src="https://user-images.githubusercontent.com/25628769/121646576-6e737200-cad0-11eb-97eb-bd62e280ccd4.png"> <img width="220" alt="상세정보" src="https://user-images.githubusercontent.com/25628769/121646616-79c69d80-cad0-11eb-92ab-0a9b2c9ea427.png">  
+<img width="220" alt="수업추가" src="https://user-images.githubusercontent.com/25628769/121646630-7c28f780-cad0-11eb-993d-1c4fd587e3a3.png"> <img width="220" alt="설정탭" src="https://user-images.githubusercontent.com/25628769/121646592-7206f900-cad0-11eb-92d9-35249210b190.png"> <img width="220" alt="학번수정" src="https://user-images.githubusercontent.com/25628769/121646966-d32ecc80-cad0-11eb-9eae-605df8f0e33e.png">
+
+
+
 
 # 소개
 
